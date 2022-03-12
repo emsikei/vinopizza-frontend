@@ -1,0 +1,29 @@
+.header__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #121618;
+  color: #fff;
+  width: 100%;
+
+  .navbar {
+    &__list {
+      display: flex;
+    }
+    &__item {
+      list-style-type: none;
+      margin: 0 20px;
+
+      a {
+        &:hover {
+          transition: all 0.4s ease;
+          color: var(--main-yellow);
+        }
+      }
+    }
+  }
+}
+
+.header__logo {
+  margin: 0 20px;
+}
