@@ -2,6 +2,7 @@ import Header from "../components/Header";
 import Intro from "../components/Intro";
 import Head from "next/head";
 import HomeInfo from "../components/HomeInfo";
+import MenuContainer from "../components/MenuContainer";
 
 export default function Home() {
   return (
@@ -17,6 +18,7 @@ export default function Home() {
       <Header />
       <Intro />
       <HomeInfo/>
+      <MenuContainer />
     </>
   );
 }
