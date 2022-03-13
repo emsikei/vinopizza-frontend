@@ -1,5 +1,5 @@
 import styles from "../styles/Header.module.scss";
-import { FaShoppingCart } from "react-icons/fa";
+import { FaShoppingCart, FaBars } from "react-icons/fa";
 
 const Header = () => {
   return (
@@ -18,9 +18,6 @@ const Header = () => {
               <a href="#">Services</a>
             </li>
             <li className={styles.navbar__item}>
-              <a href="#">Blog</a>
-            </li>
-            <li className={styles.navbar__item}>
               <a href="#">About</a>
             </li>
             <li className={styles.navbar__item}>
@@ -30,7 +27,6 @@ const Header = () => {
               <div className={styles.cart}>
                 <span className={styles.cart__icon}>
                   <FaShoppingCart
-                    size="1rem"
                     onMouseOver={({ target }) =>
                       (target.style.color = "#f6c162")
                     }
@@ -44,7 +40,19 @@ const Header = () => {
             </li>
           </ul>
         </nav>
+        <button className={styles.burger__button}>
+          <FaBars />
+        </button>
       </div>
+      <nav className={styles.mobile__navbar}>
+        <ul>
+          <li>Home</li>
+          <li>Menu</li>
+          <li>Services</li>
+          <li>About</li>
+          <li>Contact</li>
+        </ul>
+      </nav>
     </header>
   );
 };

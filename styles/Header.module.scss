@@ -18,7 +18,54 @@
     align-items: center;
   }
 
+  .burger__button {
+    display: none;
+    @media (max-width: 870px) {
+      display: block;
+      font-size: 18px;
+      border: none;
+      background: none;
+      color: var(--gray);
+      margin-right: 10px;
+      transition: all 0.4s ease;
+
+      &:hover {
+        color: #fff;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .mobile__navbar {
+    ul {
+      padding-left: 20px;
+      display: none;
+    }
+
+    @media (max-width: 870px) {
+      ul {
+        // display: block;
+      }
+    }
+
+    ul {
+      li {
+        list-style: none;
+        transition: all .4s ease;
+
+        &:hover {
+          color: #fff;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
   .navbar {
+    @media (max-width: 870px) {
+      display: none;
+    }
+
     &__list {
       display: flex;
     }

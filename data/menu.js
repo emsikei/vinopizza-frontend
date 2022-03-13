@@ -94,10 +94,8 @@ const menu = {
       price: "12",
       metrics: "500 ml",
       __v: 0,
-    }
+    },
   ],
 };
-
-// menu["categories"].map(category => console.log(category["translation"]["ru"]["name"]))
 
 export default menu;

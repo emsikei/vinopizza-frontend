@@ -1,5 +1,6 @@
 .menu__container {
-    padding-top: 50px;
+  padding-top: 50px;
+  padding-bottom: 50px;
 }
 
 .menu__filter {
@@ -173,4 +174,24 @@
       margin: 0 auto;
     }
   }
+}
+
+.menu__category {
+  text-align: center;
+
+  p {
+      color: #fff;
+  }
+}
+
+.menu__products {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.category__name {
+  text-transform: uppercase;
+  color: #fff;
+  font-size: 30px;
+  font-weight: 400;
 }

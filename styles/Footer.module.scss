@@ -1,0 +1,104 @@
+.footer {
+  background-color: #101315;
+  padding: 112px 0;
+
+  &__inner {
+    display: flex;
+    justify-content: space-around;
+    text-align: left;
+  }
+
+  &__item {
+    margin: 0 15px;
+  }
+
+  h2 {
+    text-transform: uppercase;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    margin-bottom: 40px;
+  }
+
+  p {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.8;
+  }
+
+  .about {
+    width: 30%;
+
+    .socials {
+      display: flex;
+      color: #fff;
+
+      span {
+        font-size: 20px;
+        height: 40px;
+        width: 40px;
+        background-color: rgba(255, 255, 255, 0.05);
+        display: inline-block;
+        border-radius: 50%;
+        margin-right: 10px;
+        position: relative;
+
+        a {
+          margin: 0;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+      }
+    }
+  }
+  .services {
+    width: 30%;
+    padding-left: 100px;
+    color: #fff;
+
+    ul {
+      padding-left: 0;
+    }
+
+    li {
+      list-style: none;
+      color: rgba(255, 255, 255, 0.7);
+      transition: all 0.4s ease;
+      margin-bottom: 10px;
+      font-size: 16px;
+
+      &:hover {
+        color: #fff;
+        cursor: pointer;
+      }
+    }
+  }
+  .question {
+    width: 30%;
+
+    .flex__container {
+      display: flex;
+    }
+
+    span {
+      font-size: 18px;
+      color: #fff;
+      margin-right: 10px;
+    }
+
+    p {
+      color: #fff;
+      margin-top: 0;
+    }
+
+    .address {
+      p {
+        color: rgba(255, 255, 255, 0.7);
+      }
+    }
+  }
+}
