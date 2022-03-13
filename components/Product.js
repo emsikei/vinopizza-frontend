@@ -15,10 +15,9 @@ const Product = ({ id, image, name, desc, price }) => {
       </p>
       <p>
         <span className={styles.menu__products__item__price}>
-          ${price}
+          {price} L
         </span>
       </p>
-      <button className={styles.menu__products__item__btn}>Add to cart</button>
     </div>
   );
 };

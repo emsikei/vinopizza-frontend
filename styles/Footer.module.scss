@@ -2,14 +2,35 @@
   background-color: #101315;
   padding: 112px 0;
 
+  @media (max-width: 768px) {
+    padding: 50px 0;
+  }
+
+  @media (max-width: 576px) {
+    padding: 50px;
+  }
+
   &__inner {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
     text-align: left;
+
+    @media (max-width: 768px) {
+      justify-content: center;
+    }
   }
 
   &__item {
-    margin: 0 15px;
+    // width: 30%;
+
+    @media (max-width: 578px) {
+      width: 100% !important;
+    }
+
+    @media (max-width: 576px) {
+      margin-bottom: 30px;
+    }
   }
 
   h2 {
@@ -19,6 +40,10 @@
     font-weight: 400;
     letter-spacing: 1px;
     margin-bottom: 40px;
+
+    @media (max-width: 576px) {
+      margin-bottom: 20px;
+    }
   }
 
   p {
@@ -26,38 +51,55 @@
     font-size: 16px;
     font-weight: 300;
     line-height: 1.8;
+
+    @media (max-width: 768px) {
+      font-size: 14px;
+    }
   }
 
   .about {
-    width: 30%;
+    width: 40%;
+
+    @media (max-width: 768px) {
+      margin-right: 30px;
+    }
 
     .socials {
       display: flex;
       color: #fff;
 
-      span {
+      div {
         font-size: 20px;
         height: 40px;
         width: 40px;
         background-color: rgba(255, 255, 255, 0.05);
-        display: inline-block;
         border-radius: 50%;
         margin-right: 10px;
-        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        @media (max-width: 576px) {
+          font-size: 15px;
+          height: 30px;
+          width: 30px;
+        }
 
         a {
-          margin: 0;
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
+          color: rgba(255, 255, 255, 0.7);
+          transition: all 0.2s ease-out;
+          align-self: end;
+
+          &:hover {
+            color: #fff;
+          }
         }
       }
     }
   }
   .services {
-    width: 30%;
-    padding-left: 100px;
+    width: 20%;
+    // padding-left: 100px;
     color: #fff;
 
     ul {
@@ -71,6 +113,10 @@
       margin-bottom: 10px;
       font-size: 16px;
 
+      @media (max-width: 768px) {
+        font-size: 14px;
+      }
+
       &:hover {
         color: #fff;
         cursor: pointer;
@@ -79,6 +125,10 @@
   }
   .question {
     width: 30%;
+
+    @media (max-width: 576px) {
+      margin-bottom: 0;
+    }
 
     .flex__container {
       display: flex;

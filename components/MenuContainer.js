@@ -1,9 +1,10 @@
 import menu from "../data/menu";
 import { useState } from "react";
 import styles from "../styles/Menu.module.scss";
-import Menu from "./Menu";
 import Category from "./Category";
 import Product from "./Product";
+import { useContext } from "react";
+import { CartContext } from "../contexts/CartContext";
 
 // const allCategories = [
 //   { translation: { ru: { name: "Все" }, ro: { name: "Toate" } } },
@@ -37,6 +38,15 @@ getAllCategories(allCategories, menu.products);
 const MenuContainer = () => {
   const [categories, setCategories] = useState(allCategories);
   const [products, setProducts] = useState(menu.products);
+  const { cartContent, cartCount } = useContext(CartContext);
+
+  const [cart, setCart] = cartContent;
+  const [cartItemsCount, setCartItemsCount] = cartCount;
+
+  const addToCart = (product) => {
+    setCart([...cart, product]);
+    setCartItemsCount(cartItemsCount + 1);
+  };
 
   const filterItems = (category) => {
     if (category === "Toate") {
@@ -68,7 +78,7 @@ const MenuContainer = () => {
         {categories.map((category, index) => {
           return (
             <div className={styles.menu__category} key={index}>
-             <Category name={category["translation"]["ro"]["name"]}/>
+              <Category name={category["translation"]["ro"]["name"]} />
               <div className={styles.menu__products}>
                 {products
                   .filter(
@@ -78,12 +88,23 @@ const MenuContainer = () => {
                   )
                   .map((product) => {
                     return (
-                      <Product key={product["_id"]}
-                      image={product["image"]}
-                      name={product["translation"]["ro"]["name"]}
-                      desc={product["translation"]["ro"]["description"]}
-                      price={product["price"]}
-                      />
+                      <>
+                        <div className={styles.product__wrapper}>
+                          <Product
+                            key={product["_id"]}
+                            image={product["image"]}
+                            name={product["translation"]["ro"]["name"]}
+                            desc={product["translation"]["ro"]["description"]}
+                            price={product["price"]}
+                          />
+                          <button
+                            className={styles.menu__btn}
+                            onClick={() => addToCart(product)}
+                          >
+                            Add to cart
+                          </button>
+                        </div>
+                      </>
                     );
                   })}
               </div>

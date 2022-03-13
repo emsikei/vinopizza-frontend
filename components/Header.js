@@ -1,10 +1,26 @@
 import styles from "../styles/Header.module.scss";
 import { FaShoppingCart, FaBars } from "react-icons/fa";
+import { useState, useContext } from "react";
+import { CartContext } from "../contexts/CartContext";
+import { FaTwitter, FaFacebookF, FaInstagram } from "react-icons/fa";
 
 const Header = () => {
+  const [showMobileNav, setShowMobileNav] = useState(false);
+
+  const { cartContent, cartCount } = useContext(CartContext);
+
+  const [cartItemsCount, setCartItemsCount] = cartCount;
+
+  const toggleMobileNav = () => {
+    setShowMobileNav(!showMobileNav);
+  };
+
   return (
     <header className={styles.header}>
       <div className={`${styles.container} ${styles.header__container}`}>
+        <button className={styles.burger__button} onClick={toggleMobileNav}>
+          <FaBars />
+        </button>
         <div className={styles.header__logo}>Vinopizza</div>
         <nav className={styles.navbar}>
           <ul className={styles.navbar__list}>
@@ -21,36 +37,50 @@ const Header = () => {
               <a href="#">About</a>
             </li>
             <li className={styles.navbar__item}>
-              <a href="#">Contact</a>
-            </li>
-            <li className={styles.navbar__item}>
-              <div className={styles.cart}>
-                <span className={styles.cart__icon}>
-                  <FaShoppingCart
-                    onMouseOver={({ target }) =>
-                      (target.style.color = "#f6c162")
-                    }
-                    onMouseOut={({ target }) =>
-                      (target.style.color = "#a8aaaa")
-                    }
-                  />
-                </span>
-                <span className={styles.cart__count}>0</span>
-              </div>
+              <a href="#footer">Contact</a>
             </li>
           </ul>
         </nav>
-        <button className={styles.burger__button}>
-          <FaBars />
-        </button>
+        <div className={styles.cart}>
+          <div className={styles.cart__icon}>
+            <FaShoppingCart
+              onMouseOver={({ target }) => (target.style.color = "#f6c162")}
+              onMouseOut={({ target }) => (target.style.color = "#a8aaaa")}
+            />
+          </div>
+          <div className={styles.cart__count}>
+            <div>{cartItemsCount}</div>
+          </div>
+        </div>
       </div>
-      <nav className={styles.mobile__navbar}>
+      <nav
+        className={
+          showMobileNav ? styles.mobile__navbar__active : styles.mobile__navbar
+        }
+      >
         <ul>
           <li>Home</li>
           <li>Menu</li>
           <li>Services</li>
           <li>About</li>
           <li>Contact</li>
+          <ul className={styles.socials}>
+            <li className={styles.socials__item}>
+              <a href="https://twitter.com" target="_blank">
+                <FaTwitter />
+              </a>
+            </li>
+            <li className={styles.socials__item}>
+              <a href="https://facebook.com" target="_blank">
+                <FaFacebookF />
+              </a>
+            </li>
+            <li className={styles.socials__item}>
+              <a href="https://instagram.com" target="_blank">
+                <FaInstagram />
+              </a>
+            </li>
+          </ul>
         </ul>
       </nav>
     </header>

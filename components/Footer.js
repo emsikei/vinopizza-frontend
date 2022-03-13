@@ -10,7 +10,7 @@ import {
 
 const Footer = () => {
   return (
-    <footer className={styles.footer}>
+    <footer className={styles.footer} id="footer">
       <div className="container">
         <footer className={styles.footer__inner}>
           <div className={`${styles.about} ${styles.footer__item}`}>
@@ -20,22 +20,22 @@ const Footer = () => {
               Vokalia and Consonantia, there live the blind texts.
             </p>
             <div className={styles.socials}>
-              <span>
+              <div>
                 <a target="_blank" href="https://twitter.com/">
                   <FaTwitter />
                 </a>
-              </span>
+              </div>
 
-              <span>
+              <div>
                 <a target="_blank" href="https://facebook.com/">
                   <FaFacebookF />
                 </a>
-              </span>
-              <span>
+              </div>
+              <div>
                 <a target="_blank" href="https://instagram.com/">
                   <FaInstagram />
                 </a>
-              </span>
+              </div>
             </div>
           </div>
           <div className={`${styles.services} ${styles.footer__item}`}>

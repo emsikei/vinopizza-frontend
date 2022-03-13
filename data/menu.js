@@ -95,6 +95,44 @@ const menu = {
       metrics: "500 ml",
       __v: 0,
     },
+    {
+      translation: {
+        ru: {
+          name: "4 сыра",
+          description: "Описание",
+          category: "Пицца",
+        },
+        ro: {
+          name: "4 cascavali",
+          description: "Descriptie",
+          category: "Pizza",
+        },
+      },
+      _id: "6229cf6845e8a1543d7227a2",
+      image: "e64e2aeb-6e45-4b7f-8f41-88a8e5817104.jpg",
+      price: "150",
+      metrics: "0.5 kg",
+      __v: 0,
+    },
+    {
+      translation: {
+        ru: {
+          name: "Белое",
+          description: "Описание",
+          category: "Вино",
+        },
+        ro: {
+          name: "Alb",
+          description: "Descriptie",
+          category: "Vin",
+        },
+      },
+      _id: "6229cf6845e8a1543d1e27a3",
+      image: "e64e2aeb-6e45-4b7f-8f41-88a8e5817104.jpg",
+      price: "350",
+      metrics: "500 ml",
+      __v: 0,
+    },
   ],
 };
 
