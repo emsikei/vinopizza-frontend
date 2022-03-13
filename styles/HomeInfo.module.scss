@@ -1,0 +1,151 @@
+.container {
+  margin: 0 auto;
+  max-width: 1340px;
+}
+
+.wrapper {
+  background-color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.info__container {
+  display: flex;
+  color: #fff;
+}
+
+.info__item {
+  margin: 30px 15px;
+  display: flex;
+  align-items: baseline;
+
+  .icon__wrapper {
+    line-height: 1.4;
+    margin-right: 10px;
+  }
+
+  h3 {
+    line-height: 1.4;
+    font-weight: 400;
+    font-family: var(--font-josefin);
+    font-size: 16px;
+  }
+
+  p {
+    color: var(--gray);
+    font-family: var(--font-poppins);
+    font-size: 15px;
+    line-height: 1.8;
+    font-weight: 300;
+  }
+}
+
+.welcome {
+  display: flex;
+
+  &__photo {
+    width: 50%;
+    background-image: url("../public/assets/images/welcome.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  &__content {
+    width: 50%;
+    padding: 50px 80px 80px 80px;
+
+    h2 {
+      font-size: 30px;
+      font-weight: 400;
+      text-transform: uppercase;
+
+      span {
+        color: var(--main-yellow);
+      }
+    }
+
+    p {
+      color: #7d7c7c;
+    }
+  }
+}
+
+.services__wrapper {
+  background-image: url("../public/assets/images/food_bg.png");
+  width: 100%;
+  padding: 105px 0;
+
+  .services__heading {
+    text-align: center;
+    width: 40%;
+    margin: 0 auto 70px;
+
+    h2 {
+      font-size: 30px;
+      font-weight: 400;
+      text-transform: uppercase;
+      color: #000;
+    }
+
+    p {
+      color: #5c3d03;
+      font-family: var(--font-poppins);
+      font-size: 15px;
+      line-height: 1.8;
+      font-weight: 300;
+    }
+  }
+}
+
+.services {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+
+  &__icon {
+    &__wrapper {
+      position: relative;
+      width: 100px;
+      height: 100px;
+      margin: 0 auto;
+      z-index: 0;
+
+      &:after {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        content: "";
+        border: 1px solid #bf7e06;
+        z-index: -1;
+      }
+
+      span {
+        transition: all 0.3s ease;
+      }
+
+      &:hover {
+        span {
+          color: #fff;
+        }
+      }
+    }
+  }
+
+  &__item {
+    width: 25%;
+    margin: 0 15px;
+
+    h3 {
+      color: #000;
+      text-transform: uppercase;
+    }
+
+    p {
+      color: #000;
+    }
+  }
+}

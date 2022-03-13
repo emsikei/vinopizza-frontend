@@ -1,17 +1,30 @@
 :root {
   /* ====== Colors ======*/
-  --main-yellow:  #f6c162
-}
+  --main-yellow: #f6c162;
+  --gray: #a8aaaa;
 
+  /* ====== Fonts ======*/
+  --font-poppins: "Poppins", Arial, sans-serif;
+  --font-nothing-cursive: "Nothing You Could Do", cursive;
+  --font-josefin: "Josefin Sans", Arial, sans-serif;
+}
 
 html,
 body {
   padding: 0;
-  margin: 0 auto;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  max-width: 1340px;
   background-image: url("../public/assets/images/background_texture.jpg");
+  background-repeat: repeat;
+  background-size: cover cover;
+  background-position: center;
+  font-family: var(--font-poppins);
+  font-size: 15px;
+  line-height: 1.8;
+  font-weight: 300;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1340px;
 }
 
 a {
@@ -21,4 +34,26 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5 {
+  line-height: 1.4;
+  color: #fff;
+  font-weight: 400;
+  font-family: var(--font-josefin);
+}
+
+.flaticon-diet,
+.flaticon-bicycle,
+.flaticon-pizza-1 {
+  font-size: 60px;
 }
