@@ -1,15 +1,14 @@
 import styles from "../styles/Header.module.scss";
 import { FaShoppingCart, FaBars } from "react-icons/fa";
 import { useState, useContext } from "react";
-import { CartContext } from "../contexts/CartContext";
+import { AppContext } from "../contexts/AppContext";
 import { FaTwitter, FaFacebookF, FaInstagram } from "react-icons/fa";
+import Link from "next/link";
 
-const Header = () => {
+const Header = ({ cartItemCount }) => {
   const [showMobileNav, setShowMobileNav] = useState(false);
 
-  const { cartContent, cartCount } = useContext(CartContext);
-
-  const [cartItemsCount, setCartItemsCount] = cartCount;
+  const [cart, setCart] = useContext(AppContext);
 
   const toggleMobileNav = () => {
     setShowMobileNav(!showMobileNav);
@@ -25,7 +24,7 @@ const Header = () => {
         <nav className={styles.navbar}>
           <ul className={styles.navbar__list}>
             <li className={styles.navbar__item}>
-              <a href="#">Home</a>
+              <Link href="/">Home</Link>
             </li>
             <li className={styles.navbar__item}>
               <a href="#">Menu</a>
@@ -42,14 +41,14 @@ const Header = () => {
           </ul>
         </nav>
         <div className={styles.cart}>
-          <div className={styles.cart__icon}>
+          <Link href="/cart" className={styles.cart__icon}>
             <FaShoppingCart
               onMouseOver={({ target }) => (target.style.color = "#f6c162")}
               onMouseOut={({ target }) => (target.style.color = "#a8aaaa")}
             />
-          </div>
+          </Link>
           <div className={styles.cart__count}>
-            <div>{cartItemsCount}</div>
+            <div>{cart.length}</div>
           </div>
         </div>
       </div>

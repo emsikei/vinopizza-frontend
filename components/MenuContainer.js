@@ -4,7 +4,7 @@ import styles from "../styles/Menu.module.scss";
 import Category from "./Category";
 import Product from "./Product";
 import { useContext } from "react";
-import { CartContext } from "../contexts/CartContext";
+import { AppContext } from "../contexts/AppContext";
 
 // const allCategories = [
 //   { translation: { ru: { name: "Все" }, ro: { name: "Toate" } } },
@@ -38,14 +38,10 @@ getAllCategories(allCategories, menu.products);
 const MenuContainer = () => {
   const [categories, setCategories] = useState(allCategories);
   const [products, setProducts] = useState(menu.products);
-  const { cartContent, cartCount } = useContext(CartContext);
-
-  const [cart, setCart] = cartContent;
-  const [cartItemsCount, setCartItemsCount] = cartCount;
+  const [cart, setCart] = useContext(AppContext);
 
   const addToCart = (product) => {
     setCart([...cart, product]);
-    setCartItemsCount(cartItemsCount + 1);
   };
 
   const filterItems = (category) => {
