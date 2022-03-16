@@ -56,8 +56,8 @@ const Cart = () => {
         {cart.map((item) => {
           return (
             <CartItem
-              item={item}
               key={item._id}
+              item={item}
               incrementQuantity={incrementQuantity}
               decrementQuantity={decrementQuantity}
               removeItem={removeItem}

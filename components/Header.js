@@ -20,23 +20,25 @@ const Header = ({ cartItemCount }) => {
         <button className={styles.burger__button} onClick={toggleMobileNav}>
           <FaBars />
         </button>
-        <div className={styles.header__logo}>Vinopizza</div>
+        <div className={styles.header__logo}>
+          <Link href="/">Vinopizza</Link>
+        </div>
         <nav className={styles.navbar}>
           <ul className={styles.navbar__list}>
             <li className={styles.navbar__item}>
               <Link href="/">Home</Link>
             </li>
             <li className={styles.navbar__item}>
-              <a href="#">Menu</a>
+              <Link href="/">Menu</Link>
             </li>
             <li className={styles.navbar__item}>
-              <a href="#">Services</a>
+              <Link href="/">Services</Link>
             </li>
             <li className={styles.navbar__item}>
-              <a href="#">About</a>
+              <Link href="/">About</Link>
             </li>
             <li className={styles.navbar__item}>
-              <a href="#footer">Contact</a>
+              <Link href="#footer">Contact</Link>
             </li>
           </ul>
         </nav>
@@ -58,11 +60,21 @@ const Header = ({ cartItemCount }) => {
         }
       >
         <ul>
-          <li>Home</li>
-          <li>Menu</li>
-          <li>Services</li>
-          <li>About</li>
-          <li>Contact</li>
+          <li>
+            <Link href="/">Home</Link>
+          </li>
+          <li>
+            <Link href="/">Menu</Link>
+          </li>
+          <li>
+            <Link href="/">Services</Link>
+          </li>
+          <li>
+            <Link href="/">About</Link>
+          </li>
+          <li>
+            <Link href="/">Contact</Link>
+          </li>
           <ul className={styles.socials}>
             <li className={styles.socials__item}>
               <a href="https://twitter.com" target="_blank">
