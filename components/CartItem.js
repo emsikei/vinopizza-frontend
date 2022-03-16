@@ -1,5 +1,6 @@
 import styles from "../styles/Cart.module.scss";
-import { FaTrashAlt } from "react-icons/fa";
+import { FaTrash } from "react-icons/fa";
+import { CgClose } from "react-icons/cg";
 
 const CartItem = ({
   item,
@@ -7,12 +8,6 @@ const CartItem = ({
   decrementQuantity,
   removeItem,
 }) => {
-  //   return <h2>{item["translation"]["ro"]["name"]}</h2>;
-
-  //   const increment = (item) => {
-  //     item["quantity"] = item["quantity"] + 1;
-  //   };
-
   return (
     <div className={styles.item__info}>
       <div className={styles.wrapper}>
@@ -29,16 +24,15 @@ const CartItem = ({
         </div>
       </div>
       <div className={styles.numbers}>
-        <div className={styles.control__container}>
-          <p>{item.price}</p>
-
+        <p className={styles.price}>{item.price}</p>
+        <div className={styles.quantity__container}>
           <button
             className={styles.control}
             onClick={() => decrementQuantity(item._id)}
           >
             -
           </button>
-          <p>{item.quantity}</p>
+          <p className={styles.quantity__number}>{item.quantity}</p>
           <button
             className={styles.control}
             onClick={() => incrementQuantity(item._id)}
@@ -46,13 +40,14 @@ const CartItem = ({
             +
           </button>
         </div>
-        <div className={styles.total__container}>
-          <p>{item.price * item.quantity}</p>
-        </div>
+        <p className={styles.total}>{item.price * item.quantity}</p>
 
         {/* <button onClick={() => removeItem(item._id)}>
-          <FaTrashAlt />
+          <FaTrash />
         </button> */}
+        <button onClick={() => removeItem(item._id)}>
+          <CgClose />
+        </button>
       </div>
     </div>
   );

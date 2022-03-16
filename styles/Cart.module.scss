@@ -9,10 +9,12 @@
 
   .info {
     display: flex;
+    justify-content: space-around;
+    width: 30%;
 
     p {
-      margin-left: 50px;
-      width: 30%;
+      // margin-left: 50px;
+      // width: 30%;
     }
   }
   p {
@@ -23,10 +25,12 @@
 .item__info {
   color: #fff;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
+  align-items: flex-start;
 
   .wrapper {
     display: flex;
+    width: 70%;
     margin-bottom: 30px;
   }
 
@@ -39,9 +43,27 @@
 
   .numbers {
     display: flex;
-    
-    p {
-      // margin-left: 50px;
+    justify-content: space-between;
+    align-items: center;
+    width: 30%;
+
+    .price {
+      padding: 0 7px;
+    }
+
+    .total {
+      padding-left: 10px;
+    }
+
+    .quantity__container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-left: 5px;
+    }
+
+    .quantity__number {
+      padding: 0 10px;
     }
   }
 
@@ -52,6 +74,10 @@
       height: 30px;
       justify-content: space-around;
     }
+
+    font-family: var(--font-popping);
+    font-weight: 600;
+    font-size: large;
   }
 
   button {
@@ -60,11 +86,17 @@
     height: 30px;
     background-color: var(--main-yellow);
     border: none;
-    margin-left: 5px;
 
     &:hover {
       cursor: pointer;
     }
+
+    &:first-child {
+      margin-right: 12px;
+    }
+
+    &:last-child {
+      margin-left: 12px;
+    }
   }
 }
-
