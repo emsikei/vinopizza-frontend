@@ -3,5 +3,68 @@
 }
 
 .cart__heading {
-  margin-top: 100px;
+  display: flex;
+  justify-content: space-between;
+  color: #fff;
+
+  .info {
+    display: flex;
+
+    p {
+      margin-left: 50px;
+      width: 30%;
+    }
+  }
+  p {
+    width: 70%;
+  }
 }
+
+.item__info {
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+
+  .wrapper {
+    display: flex;
+    margin-bottom: 30px;
+  }
+
+  .img__container {
+    background-color: #fff;
+    width: 150px;
+    height: 100px;
+    margin-right: 20px;
+  }
+
+  .numbers {
+    display: flex;
+    
+    p {
+      // margin-left: 50px;
+    }
+  }
+
+  .control {
+    &__container {
+      display: flex;
+      align-items: center;
+      height: 30px;
+      justify-content: space-around;
+    }
+  }
+
+  button {
+    border-radius: 2px;
+    width: 30px;
+    height: 30px;
+    background-color: var(--main-yellow);
+    border: none;
+    margin-left: 5px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+

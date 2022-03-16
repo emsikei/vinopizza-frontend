@@ -40,7 +40,14 @@ const MenuContainer = () => {
   const [products, setProducts] = useState(menu.products);
   const [cart, setCart] = useContext(AppContext);
 
-  const addToCart = (product) => {
+  const addToCart = (product, id) => {
+    for (let item of cart) {
+      if (item._id === id) {
+        product["quantity"] += 1;
+        return;
+      }
+    }
+    product["quantity"] = 1;
     setCart([...cart, product]);
   };
 
@@ -95,7 +102,7 @@ const MenuContainer = () => {
                           />
                           <button
                             className={styles.menu__btn}
-                            onClick={() => addToCart(product)}
+                            onClick={() => addToCart(product, product._id)}
                           >
                             Add to cart
                           </button>
