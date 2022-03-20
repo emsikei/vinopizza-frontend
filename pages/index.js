@@ -1,17 +1,17 @@
 import Header from "../components/Header";
-import Intro from "../components/Intro";
+import Home from "../components/Home";
 import HomeInfo from "../components/HomeInfo";
-import MenuContainer from "../components/MenuContainer";
+import Menu from "../components/Menu";
 import Footer from "../components/Footer";
 
 export default function HomePage() {
   return (
     <>
-      <Header />
-      <Intro />
+      <Header /> 
+      <Home />
       <HomeInfo />
-      <MenuContainer />
-      <Footer />
+      <Menu/>
+      <Footer/> 
     </>
   );
 }

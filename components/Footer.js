@@ -10,7 +10,7 @@ import {
 
 const Footer = () => {
   return (
-    <footer className={styles.footer} id="footer">
+    <footer className={styles.footer}>
       <div className="container">
         <footer className={styles.footer__inner}>
           <div className={`${styles.about} ${styles.footer__item}`}>

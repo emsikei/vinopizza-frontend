@@ -8,10 +8,10 @@ const Categories = ({ categories, filterItems }) => {
           <button
             type="button"
             className={styles.menu__filter__item}
-            key={category["_id"]}
-            onClick={() => filterItems(category["translation"]["ro"]["name"])}
+            key={category._id}
+            onClick={() => filterItems(category.translation.ro.name)}
           >
-            {category["translation"]["ro"]["name"]}
+            {category.translation.ro.name}
           </button>
         );
       })}

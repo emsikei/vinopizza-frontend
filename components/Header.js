@@ -1,5 +1,6 @@
 import styles from "../styles/Header.module.scss";
 import { FaShoppingCart, FaBars } from "react-icons/fa";
+import { BsCart3 } from "react-icons/bs";
 import { useState, useContext } from "react";
 import { AppContext } from "../contexts/AppContext";
 import { FaTwitter, FaFacebookF, FaInstagram } from "react-icons/fa";
@@ -38,13 +39,13 @@ const Header = ({ cartItemCount }) => {
               <Link href="/">About</Link>
             </li>
             <li className={styles.navbar__item}>
-              <Link href="#footer">Contact</Link>
+              <Link href="/">Contact</Link>
             </li>
           </ul>
         </nav>
         <div className={styles.cart}>
           <Link href="/cart" className={styles.cart__icon}>
-            <FaShoppingCart
+            <BsCart3
               onMouseOver={({ target }) => (target.style.color = "#f6c162")}
               onMouseOut={({ target }) => (target.style.color = "#a8aaaa")}
             />
