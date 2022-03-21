@@ -27,28 +27,40 @@ const Header = ({ cartItemCount }) => {
         <nav className={styles.navbar}>
           <ul className={styles.navbar__list}>
             <li className={styles.navbar__item}>
-              <Link href="/">Home</Link>
+              <Link href="/">
+                <a>Home</a>
+              </Link>
             </li>
             <li className={styles.navbar__item}>
-              <Link href="/">Menu</Link>
+              <Link href="/">
+                <a>Menu</a>
+              </Link>
             </li>
             <li className={styles.navbar__item}>
-              <Link href="/">Services</Link>
+              <Link href="/">
+                <a>Services</a>
+              </Link>
             </li>
             <li className={styles.navbar__item}>
-              <Link href="/">About</Link>
+              <Link href="/">
+                <a>About</a>
+              </Link>
             </li>
             <li className={styles.navbar__item}>
-              <Link href="/">Contact</Link>
+              <Link href="/">
+                <a>Contact</a>
+              </Link>
             </li>
           </ul>
         </nav>
         <div className={styles.cart}>
           <Link href="/cart" className={styles.cart__icon}>
-            <BsCart3
-              onMouseOver={({ target }) => (target.style.color = "#f6c162")}
-              onMouseOut={({ target }) => (target.style.color = "#a8aaaa")}
-            />
+            <a>
+              <BsCart3
+                onMouseOver={({ target }) => (target.style.color = "#f6c162")}
+                onMouseOut={({ target }) => (target.style.color = "#a8aaaa")}
+              />
+            </a>
           </Link>
           <div className={styles.cart__count}>
             <div>{cart.length}</div>
@@ -62,19 +74,29 @@ const Header = ({ cartItemCount }) => {
       >
         <ul>
           <li>
-            <Link href="/">Home</Link>
+            <Link href="/">
+              <a>Home</a>
+            </Link>
           </li>
           <li>
-            <Link href="/">Menu</Link>
+            <Link href="/">
+              <a>Menu</a>
+            </Link>
           </li>
           <li>
-            <Link href="/">Services</Link>
+            <Link href="/">
+              <a>Services</a>
+            </Link>
           </li>
           <li>
-            <Link href="/">About</Link>
+            <Link href="/">
+              <a>About</a>
+            </Link>
           </li>
           <li>
-            <Link href="/">Contact</Link>
+            <Link href="/">
+              <a>Contact</a>
+            </Link>
           </li>
           <ul className={styles.socials}>
             <li className={styles.socials__item}>

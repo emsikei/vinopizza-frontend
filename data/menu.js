@@ -127,7 +127,7 @@ const menu = {
           category: "Pizza",
         },
       },
-      _id: "6229cf6845e8a1543d7227a2",
+      _id: "6229cf6845e8a1243d7227a2",
       image: "/assets/images/test_pizza.jpg",
       price: 150,
       metrics: "0.5 kg",
