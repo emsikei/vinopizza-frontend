@@ -1,33 +1,34 @@
 import styles from "../styles/Menu.module.scss";
 
-const Product = ({ id, product, addToCart }) => {
-  const image = product.image;
-  const name = product.translation.ro.name;
-  const desc = product.translation.ro.description;
-  const metrics = product.metrics;
-  const price = product.price;
+const Product = ({product, addToCart}) => {
+    return (
+        <>
+            <div className={styles.product__wrapper}>
+                <div className={styles.menu__products__item}>
+                    <div className={styles.menu__products__item__image}>
+                        <img src={product.image} alt={product.translation.ro.name}/>
+                    </div>
+                    <h3 className={styles.menu__products__item__name}>{product.translation.ro.name}</h3>
+                    <p className={styles.menu__products__item__desc}>{product.translation.ro.description}</p>
+                    {/*<p>{product.metrics}</p>*/}
+                    {/*<p>*/}
+                    {/*    <span className={styles.menu__products__item__price}>{product.price} L</span>*/}
+                    {/*</p>*/}
+                </div>
+                <div className={styles.product__item__footer}>
+                    <p>{product.metrics}</p>
+                    <button
+                        className={styles.menu__btn}
+                        onClick={() => addToCart(product, product._id)}
+                    >
+                        Add to cart
+                    </button>
+                    <p className={styles.price}>{product.price} L</p>
+                </div>
 
-  return (
-    <>
-      <div className={styles.menu__products__item}>
-        <div className={styles.menu__products__item__image}>
-          <img src={image} alt={name} />
-        </div>
-        <h3 className={styles.menu__products__item__name}>{name}</h3>
-        <p className={styles.menu__products__item__desc}>{desc}</p>
-        <p>{metrics}</p>
-        <p>
-          <span className={styles.menu__products__item__price}>{price} L</span>
-        </p>
-      </div>
-      <button
-        className={styles.menu__btn}
-        onClick={() => addToCart(product, id)}
-      >
-        Add to cart
-      </button>
-    </>
-  );
+            </div>
+        </>
+    );
 };
 
 export default Product;
