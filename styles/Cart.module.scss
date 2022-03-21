@@ -29,15 +29,80 @@
     }
   }
 
-  .subtotal__card {
+  /* ========= Cart Subtotal Card ========= */
+
+  .subtotal__card__wrapper {
     width: 33.333333%;
+    margin-left: 20px;
+    position: relative;
+
+    div {
+      padding: 15px 0;
+      margin-bottom: 7.5px;
+    }
+
+    .btn__order {
+      width: 100%;
+      background-color: var(--main-yellow);
+      border: 1px solid transparent;
+      padding: 20px 0;
+      font-family: var(--font-poppins);
+      font-size: 15px;
+      line-height: 1.8;
+      font-weight: 300;
+      margin-top: 15px;
+      transition: all 0.2s ease-in-out;
+      animation: 1s slow-appearance;
+      animation-delay: 1s;
+      animation-fill-mode: forwards;
+      visibility: hidden;
+
+      &:hover {
+        cursor: pointer;
+        color: var(--main-yellow);
+        background: transparent;
+        border: 1px solid var(--main-yellow);
+      }
+    }
+  }
+
+  .subtotal__card {
     display: flex;
     justify-content: center;
-    align-items: center;
     flex-direction: column;
-    height: 300px;
+    height: 290px;
     border: 1px solid #fff;
-    margin-left: 25px;
+    position: relative;
+    animation: animatebottom 2s ease;
+
+    @keyframes animatebottom {
+      from {
+        bottom: -75px;
+        opacity: 0;
+      }
+      to {
+        bottom: 0;
+        opacity: 1;
+      }
+    }
+
+    div {
+      padding: 0 20px;
+      font-size: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+
+      &:not(:last-child):after {
+        content: "";
+        width: 90%;
+        height: 1px;
+        background-color: #fff;
+        position: absolute;
+        bottom: 0;
+      }
+    }
   }
 
   hr {
@@ -76,9 +141,17 @@
       border-radius: 2px;
       background-color: var(--main-yellow);
       border: none;
+      font-size: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease-in-out;
 
       &:hover {
         cursor: pointer;
+        color: var(--main-yellow);
+        background: transparent;
+        border: 1px solid var(--main-yellow);
       }
     }
 
@@ -87,16 +160,6 @@
       width: 9.375%;
       display: flex;
       justify-content: center;
-
-      button {
-        &:first-child {
-          margin-right: 12px;
-        }
-
-        &:last-child {
-          margin-left: 12px;
-        }
-      }
 
       div {
         width: 25px;
@@ -114,5 +177,15 @@
     &__remove {
       width: 9.375%;
     }
+  }
+}
+
+@keyframes slow-appearance {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    visibility: visible;
+    opacity: 1;
   }
 }

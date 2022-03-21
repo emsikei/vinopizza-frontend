@@ -27,9 +27,13 @@ const CartItem = ({
         </div>
         <div className={styles.cart__item__price}>{price}</div>
         <div className={styles.cart__item__qty}>
-          <button onClick={() => decrementQuantity(item._id)}>-</button>
+          <div className={styles.button__wrapper}>
+            <button onClick={() => decrementQuantity(item._id)}>-</button>
+          </div>
           <div>{quantity}</div>
-          <button onClick={() => incrementQuantity(item._id)}>+</button>
+          <div className={styles.button__wrapper}>
+            <button onClick={() => incrementQuantity(item._id)}>+</button>
+          </div>
         </div>
         <div className={styles.cart__item__total}>{price * quantity}</div>
         <div className={styles.cart__item__remove}>
