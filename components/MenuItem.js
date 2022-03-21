@@ -1,6 +1,6 @@
 import styles from "../styles/Menu.module.scss";
 
-const Product = ({product, addToCart}) => {
+const MenuItem = ({product, addToCart}) => {
     return (
         <>
             <div className={styles.product__wrapper}>
@@ -10,10 +10,6 @@ const Product = ({product, addToCart}) => {
                     </div>
                     <h3 className={styles.menu__products__item__name}>{product.translation.ro.name}</h3>
                     <p className={styles.menu__products__item__desc}>{product.translation.ro.description}</p>
-                    {/*<p>{product.metrics}</p>*/}
-                    {/*<p>*/}
-                    {/*    <span className={styles.menu__products__item__price}>{product.price} L</span>*/}
-                    {/*</p>*/}
                 </div>
                 <div className={styles.product__item__footer}>
                     <p>{product.metrics}</p>
@@ -31,4 +27,4 @@ const Product = ({product, addToCart}) => {
     );
 };
 
-export default Product;
+export default MenuItem;

@@ -2,7 +2,7 @@ import menu from "../data/menu";
 import {useState} from "react";
 import styles from "../styles/Menu.module.scss";
 import Category from "./Category";
-import Product from "./Product";
+import MenuItem from "./MenuItem";
 import {useContext} from "react";
 import {AppContext} from "../contexts/AppContext";
 
@@ -84,8 +84,8 @@ const Menu = () => {
                                     )
                                     .map((product) => {
                                         return (
-                                            <Product
-                                                key={product._id}
+                                            <MenuItem
+                                                 key={product._id}
                                                 product={product}
                                                 addToCart={addToCart}
                                             />
