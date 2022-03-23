@@ -5,31 +5,10 @@ import Category from "./Category";
 import MenuItem from "./MenuItem";
 import {useContext} from "react";
 import {AppContext} from "../contexts/AppContext";
-
-function getAllCategories(allCategories, products) {
-    for (let product of products) {
-        if (
-            !allCategories.some(
-                (category) =>
-                    category.translation.ru.name === product.translation.ru.category &&
-                    category.translation.ro.name === product.translation.ro.category
-            )
-        ) {
-            allCategories.push({
-                translation: {
-                    ru: {name: product.translation.ru.category},
-                    ro: {name: product.translation.ro.category},
-                },
-            });
-        }
-    }
-}
-
-let allCategories = [];
-getAllCategories(allCategories, menu.products);
+import {getAllCategories} from "../helpers";
 
 const Menu = () => {
-    const [categories, setCategories] = useState(allCategories);
+    const [categories, setCategories] = useState(getAllCategories(menu.products));
     const [products, setProducts] = useState(menu.products);
     const [cart, setCart] = useContext(AppContext);
 

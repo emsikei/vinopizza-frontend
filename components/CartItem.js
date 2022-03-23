@@ -1,5 +1,4 @@
 import styles from "../styles/Cart.module.scss";
-import { FaTrash } from "react-icons/fa";
 import { CgClose } from "react-icons/cg";
 
 const CartItem = ({

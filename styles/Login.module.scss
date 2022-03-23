@@ -37,6 +37,7 @@
     font-size: 15px;
     font-family: var(--font-poppins);
     width: 300px;
+    transition: all .2s ease-in-out;
 
     &:focus {
       outline: 1px solid var(--main-yellow);

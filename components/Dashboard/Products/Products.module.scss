@@ -1,0 +1,25 @@
+.products {
+  color: #fff;
+  width: 60%;
+  display: block;
+  text-align: center;
+  margin: 0 auto;
+
+  th:nth-child(-n+4) {
+    cursor: pointer;
+  }
+
+  .edit, .remove {
+    cursor: pointer;
+  }
+
+  th, td {
+    padding: 15px;
+  }
+
+  .product__item {
+    .edit, .remove {
+      cursor: pointer;
+    }
+  }
+}

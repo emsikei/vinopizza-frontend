@@ -117,12 +117,12 @@ const menu = {
     {
       translation: {
         ru: {
-          name: "4 сыра",
+          name: "Дьявольская",
           description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia harum aspernatur in aut voluptates reprehenderit doloribus dolorum",
           category: "Пицца",
         },
         ro: {
-          name: "4 cascavali",
+          name: "Diavola",
           description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia harum aspernatur in aut voluptates reprehenderit doloribus dolorum",
           category: "Pizza",
         },
@@ -155,19 +155,19 @@ const menu = {
     {
       translation: {
         ru: {
-          name: "Пепперони",
+          name: "Красное",
           description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia harum aspernatur in aut voluptates reprehenderit doloribus dolorum",
-          category: "Пицца",
+          category: "Вино",
         },
         ro: {
-          name: "Pepperoni",
+          name: "Rosu",
           description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia harum aspernatur in aut voluptates reprehenderit doloribus dolorum",
-          category: "Pizza",
+          category: "Vin",
         },
       },
       _id: "6229cf6845e8a24543d1e27a3",
       image: "/assets/images/test_pizza.jpg",
-      price: 350,
+      price: 400,
       metrics: "500 ml",
       __v: 0,
     }
