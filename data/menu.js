@@ -55,6 +55,27 @@ const menu = {
       image: "/assets/images/test_pizza.jpg",
       price: 200,
       metrics: "500 g",
+      quantity: 1,
+      __v: 0,
+    },
+    {
+      translation: {
+        ru: {
+          name: "Веган",
+          description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia harum aspernatur in aut voluptates reprehenderit doloribus dolorum",
+          category: "Пицца",
+        },
+        ro: {
+          name: "Vegan",
+          description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+          category: "Pizza",
+        },
+      },
+      _id: "6229cf4b45e8a2743d7e279f",
+      image: "/assets/images/test_pizza.jpg",
+      price: 180,
+      metrics: "500 g",
+      quantity: 1,
       __v: 0,
     },
     {
@@ -74,6 +95,7 @@ const menu = {
       image: "/assets/images/test_pizza.jpg",
       price: 180,
       metrics: "500 g",
+      quantity: 1,
       __v: 0,
     },
     {
@@ -93,6 +115,7 @@ const menu = {
       image: "/assets/images/test_pizza.jpg",
       price: 12,
       metrics: "500 ml",
+      quantity: 1,
       __v: 0,
     },
     {
@@ -112,6 +135,7 @@ const menu = {
       image: "/assets/images/test_pizza.jpg",
       price: 150,
       metrics: "0.5 kg",
+      quantity: 1,
       __v: 0,
     },
     {
@@ -131,6 +155,7 @@ const menu = {
       image: "/assets/images/test_pizza.jpg",
       price: 150,
       metrics: "0.5 kg",
+      quantity: 1,
       __v: 0,
     },
     {
@@ -150,6 +175,7 @@ const menu = {
       image: "/assets/images/test_pizza.jpg",
       price: 350,
       metrics: "500 ml",
+      quantity: 1,
       __v: 0,
     },
     {
@@ -169,6 +195,7 @@ const menu = {
       image: "/assets/images/test_pizza.jpg",
       price: 400,
       metrics: "500 ml",
+      quantity: 1,
       __v: 0,
     }
   ],

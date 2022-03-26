@@ -1,4 +1,4 @@
-import styles from "../styles/HomeInfo.module.scss";
+import styles from "./HomeInfo.module.scss";
 import {FaClock, FaMapMarkerAlt, FaPhoneAlt} from "react-icons/fa";
 
 const Contact = () => {

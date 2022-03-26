@@ -1,8 +1,7 @@
 import React from 'react';
-import Dashboard from "../../components/Dashboard";
-import styles from "../../styles/Dashboard.module.scss";
-import Sidebar from "../../components/Sidebar";
-import DashboardContent from "../../components/DashboardContent";
+import styles from "../../components/Dashboard/Dashboard.module.scss";
+import Sidebar from "../../components/Dashboard/Sidebar";
+import DashboardContent from "../../components/Dashboard/DashboardContent";
 
 const Statistics = () => {
     return (

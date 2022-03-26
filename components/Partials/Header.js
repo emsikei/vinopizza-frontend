@@ -1,4 +1,4 @@
-import styles from "../../styles/Header.module.scss";
+import styles from "./Header.module.scss";
 import { FaShoppingCart, FaBars } from "react-icons/fa";
 import { BsCart3 } from "react-icons/bs";
 import { useState, useContext } from "react";

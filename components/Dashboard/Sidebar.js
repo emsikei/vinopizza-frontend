@@ -1,7 +1,7 @@
-import styles from "../styles/Dashboard.module.scss"
+import styles from "./Dashboard.module.scss"
 import {useContext} from "react";
 import {useRouter} from "next/router"
-import {AppContext} from "../contexts/AppContext";
+import {AppContext} from "../../contexts/AppContext";
 
 const Sidebar = () => {
     const value = useContext(AppContext);

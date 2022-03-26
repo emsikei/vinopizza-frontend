@@ -1,39 +1,27 @@
-const cart = [{
-    translation: {
-        ru: {
-            name: "Пеперони",
-            description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia harum aspernatur in aut voluptates reprehenderit doloribus dolorum",
-            category: "Пицца",
-        }, ro: {
-            name: "Peperoni",
-            description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia harum aspernatur in aut voluptates reprehenderit doloribus dolorum",
-            category: "Pizza",
-        },
-    },
-    _id: "6229cf4b45e8a1543d7e279f",
-    image: "/assets/images/test_pizza.jpg",
-    price: 200,
-    metrics: "500 g",
-    __v: 0,
-    quantity: 2,
-}, {
-    translation: {
-        ru: {
-            name: "4 сыра",
-            description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia harum aspernatur in aut voluptates reprehenderit doloribus dolorum",
-            category: "Пицца",
-        }, ro: {
-            name: "4 cascavali",
-            description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia harum aspernatur in aut voluptates reprehenderit doloribus dolorum",
-            category: "Pizza",
-        },
-    },
-    _id: "6229cf6845e8a1543d7227a2",
-    image: "/assets/images/test_pizza.jpg",
-    price: 150,
-    metrics: "0.5 kg",
-    __v: 0,
-    quantity: 1,
-},];
+async update(category) {
+    if (!category._id) {
+        throw new Error("не указан ID");
+    }
 
-console.log(cart[0])
+    const languages = ["ru", "ro"];
+
+    const oldCategory = await Categories.findById(category._id);
+
+    for(let lang of languages) {
+        if(oldCategory.translation.lang.name != category.translation.lang.name){
+            const productsToChange = await Product.find(oldCategory.translation.lang);
+            productsToChange.forEach(product => {
+                product.translation.lang.category = category.translation.lang.name;
+                ProductService.update(product);
+            });
+        }
+    }
+
+    const updatedCategory = await Categories.findByIdAndUpdate(
+        category._id,
+        category,
+        { new: true }
+    );
+
+    return updatedCategory;
+}

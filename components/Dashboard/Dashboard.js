@@ -1,8 +1,8 @@
 import {useState} from "react";
-import menu from "../data/menu"
+import menu from "../../data/menu"
 import Sidebar from "./Sidebar";
 
-import styles from "../styles/Dashboard.module.scss"
+import styles from "./Dashboard.module.scss"
 import DashboardContent from "./DashboardContent";
 
 const Dashboard = () => {

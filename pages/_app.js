@@ -1,13 +1,13 @@
 import "../styles/globals.css";
 import "../styles/flaticon.css";
-import { AppProvider } from "../contexts/AppContext";
+import {AppProvider} from "../contexts/AppContext";
 
-function MyApp({ Component, pageProps }) {
-  return (
-    <AppProvider>
-      <Component {...pageProps} />
-    </AppProvider>
-  );
+function MyApp({Component, pageProps}) {
+    return (
+        <AppProvider>
+            <Component {...pageProps} />
+        </AppProvider>
+    );
 }
 
 export default MyApp;
