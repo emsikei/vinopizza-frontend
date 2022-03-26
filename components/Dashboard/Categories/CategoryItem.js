@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from "../Categories/Categories.module.scss";
+import styles from "./Categories.module.scss";
 import {FaEdit, FaTrashAlt} from "react-icons/fa";
 
 const CategoryItem = ({index, category: {_id, translation}}) => {

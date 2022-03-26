@@ -1,15 +1,16 @@
-import styles from "../styles/Header.module.scss";
+import styles from "../../styles/Header.module.scss";
 import { FaShoppingCart, FaBars } from "react-icons/fa";
 import { BsCart3 } from "react-icons/bs";
 import { useState, useContext } from "react";
-import { AppContext } from "../contexts/AppContext";
+import { AppContext } from "../../contexts/AppContext";
 import { FaTwitter, FaFacebookF, FaInstagram } from "react-icons/fa";
 import Link from "next/link";
 
 const Header = ({ cartItemCount }) => {
   const [showMobileNav, setShowMobileNav] = useState(false);
 
-  const [cart, setCart] = useContext(AppContext);
+  const value = useContext(AppContext);
+  const [cart, setCart] = value.cart;
 
   const toggleMobileNav = () => {
     setShowMobileNav(!showMobileNav);

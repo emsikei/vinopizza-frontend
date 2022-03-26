@@ -1,0 +1,232 @@
+.menu__container {
+  margin-bottom: 95px;
+}
+
+.menu__heading {
+  text-align: center;
+  width: 45%;
+  margin: 95px auto 0;
+  color: #fff;
+
+  h2 {
+    position: relative;
+    text-transform: uppercase;
+    font-size: 30px;
+    font-weight: 400;
+
+    @media (max-width: 768px) {
+      font-size: 25px;
+    }
+  }
+
+  p {
+    padding-top: 30px;
+
+    @media (max-width: 768px) {
+      padding-top: 10px;
+      font-size: 14px;
+    }
+  }
+
+  p.flip {
+    position: relative;
+    display: block;
+    width: 100%;
+    margin-bottom: 1rem;
+
+    &:after {
+      position: absolute;
+      bottom: 4px;
+      left: -100px;
+      right: 0;
+      content: "";
+      width: 40px;
+      height: 1px;
+      background: #8d5d05;
+      margin: 0 auto;
+    }
+
+    &:before {
+      position: absolute;
+      bottom: 4px;
+      left: 100px;
+      right: 0;
+      content: "";
+      width: 40px;
+      height: 1px;
+      background: #8d5d05;
+      margin: 0 auto;
+    }
+
+    .deg1 {
+      position: absolute;
+      bottom: 2px;
+      left: -30px;
+      right: 0;
+      width: 6px;
+      height: 6px;
+      content: "";
+      background: #fac564;
+      transform: rotate(135deg);
+      margin: 0 auto;
+    }
+
+    .deg2 {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      width: 10px;
+      height: 10px;
+      content: "";
+      background: #fac564;
+      transform: rotate(135deg);
+      margin: 0 auto;
+    }
+
+    .deg3 {
+      position: absolute;
+      bottom: 2px;
+      left: 30px;
+      right: 0;
+      width: 6px;
+      height: 6px;
+      content: "";
+      background: #fac564;
+      transform: rotate(135deg);
+      margin: 0 auto;
+    }
+  }
+}
+
+.menu__category {
+  text-align: center;
+
+  p {
+    color: #fff;
+  }
+}
+
+.category__name {
+  text-transform: uppercase;
+  color: #fff;
+  font-size: 30px;
+  font-weight: 400;
+
+  @media (max-width: 768px) {
+    font-size: 25px;
+  }
+}
+
+.menu__products {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: left;
+  margin: 0 10px;
+}
+
+.product__item {
+  width: calc(20% - 20px);
+  margin: 0 10px 20px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.product__image {
+  overflow: hidden;
+
+  img {
+    display: block;
+    margin: 0 auto;
+    height: auto;
+    max-width: 100%;
+  }
+}
+
+.product__info {
+  padding: 0 20px;
+
+  h2, p {
+    text-align: left;
+  }
+
+  .metrics {
+    color: rgba(255, 255, 255, 0.6);
+    display: block;
+    text-align: left;
+  }
+}
+
+.product__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+
+  .price {
+    color: var(--main-yellow);
+  }
+
+  .buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .controls {
+      border: 2px solid #fff;
+      color: #fff;
+      font-family: var(--font-poppins);
+      font-size: 15px;
+      line-height: 1.8;
+      font-weight: 400;
+      margin-right: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .quantity {
+        display: inline-block;
+        margin: 0 10px;
+        width: 10px;
+      }
+
+      button {
+        background-color: transparent;
+        border: none;
+        color: #fff;
+        cursor: pointer;
+        padding: 10px;
+        height: 100%;
+        display: inline-block;
+        transition: all .3s ease-in-out;
+
+        &:hover {
+          color: var(--main-yellow);
+          box-shadow: 0 0 15px var(--main-yellow);
+        }
+      }
+    }
+
+    .cart__btn {
+      color: #fff;
+      font-size: 20px;
+      border: 2px solid #fff;
+      padding: 0px 10px;
+      cursor: pointer;
+      background-color: var(--main-yellow);
+      border: 1px solid transparent;
+      color: #000;
+      transition: all .2s ease-in-out;
+
+      &:hover {
+        color: var(--main-yellow);
+        background-color: transparent;
+        border: 1px solid var(--main-yellow);
+      }
+    }
+  }
+}
+
+// box-shadow: 0 0 15px var(--main-yellow);

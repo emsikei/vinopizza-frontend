@@ -4,7 +4,8 @@ import styles from "../styles/Cart.module.scss";
 import CartItem from "./CartItem";
 
 const Cart = () => {
-  const [cart, setCart] = useContext(AppContext);
+  const value = useContext(AppContext);
+  const [cart, setCart] = value.cart;
 
   const incrementQuantity = (id) => {
     let newState = [...cart];

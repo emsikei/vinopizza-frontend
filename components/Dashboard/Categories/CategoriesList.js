@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import styles from "../Categories/Categories.module.scss";
+import styles from "./Categories.module.scss";
 import {getAllCategories} from "../../../helpers";
 import menu from "../../../data/menu"
 import CategoryItem from "./CategoryItem";

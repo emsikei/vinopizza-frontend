@@ -1,10 +1,12 @@
 import styles from "../styles/Dashboard.module.scss"
-import {useState} from "react";
-import Link from "next/link"
+import {useContext} from "react";
 import {useRouter} from "next/router"
+import {AppContext} from "../contexts/AppContext";
 
 const Sidebar = () => {
-    const [activeTab, setActiveTab] = useState(null);
+    const value = useContext(AppContext);
+    const [activeTab, setActiveTab] = value.tab;
+
     const router = useRouter();
 
     const toggleActiveTab = (index) => {
@@ -19,16 +21,13 @@ const Sidebar = () => {
             <h1 onClick={() => router.push('/dashboard')}>Admin panel</h1>
             <ul>
                 {list.map((item, index) => {
-                    return(
+                    return (
                         <li key={index}
                             className={activeTab === index ? `${styles.active}` : ''}
                             onClick={() => {
                                 toggleActiveTab(index);
                                 router.push(`${item.link}`)
                             }}>
-                            {/*<Link href={item.link}>*/}
-                            {/*    <a>{item.name}</a>*/}
-                            {/*</Link>*/}
                             {item.name}
                         </li>
                     );

@@ -1,27 +1,29 @@
-import menu from "../data/menu";
+import menu from "../../data/menu";
 import {useState} from "react";
-import styles from "../styles/Menu.module.scss";
+import styles from "./Menu.module.scss";
 import Category from "./Category";
 import MenuItem from "./MenuItem";
 import {useContext} from "react";
-import {AppContext} from "../contexts/AppContext";
-import {getAllCategories} from "../helpers";
+import {AppContext} from "../../contexts/AppContext";
+import {getAllCategories} from "../../helpers";
 
 const Menu = () => {
     const [categories, setCategories] = useState(getAllCategories(menu.products));
     const [products, setProducts] = useState(menu.products);
-    const [cart, setCart] = useContext(AppContext);
 
-    const addToCart = (product, id) => {
-        for (let item of cart) {
-            if (item._id === id) {
-                product.quantity += 1;
-                return;
-            }
-        }
-        product.quantity = 1;
-        setCart([...cart, product]);
-    };
+    // const value = useContext(AppContext);
+    // const [cart, setCart] = value.cart;
+    //
+    // const addToCart = (product, id) => {
+    //     for (let item of cart) {
+    //         if (item._id === id) {
+    //             product.quantity += 1;
+    //             return;
+    //         }
+    //     }
+    //     product.quantity = 1;
+    //     setCart([...cart, product]);
+    // };
 
     const filterItems = (category) => {
         if (category === "Toate") {
@@ -64,9 +66,8 @@ const Menu = () => {
                                     .map((product) => {
                                         return (
                                             <MenuItem
-                                                 key={product._id}
+                                                key={product._id}
                                                 product={product}
-                                                addToCart={addToCart}
                                             />
                                         );
                                     })}
