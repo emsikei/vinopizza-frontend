@@ -1,9 +1,17 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40px;
+  margin-left: 100px;
+}
+
 .products {
   color: #fff;
-  width: 60%;
   display: block;
   text-align: center;
-  margin: 0 auto;
+  align-self: flex-start;
+
 
   th:nth-child(-n+4) {
     cursor: pointer;
@@ -20,6 +28,53 @@
   .product__item {
     .edit, .remove {
       cursor: pointer;
+    }
+
+    position: relative;
+  }
+}
+
+
+
+/* ============= Filter ============== */
+
+.filter {
+  display: flex;
+  color: #fff;
+  align-self: self-end;
+
+  .filter__item {
+    margin-right: 20px;
+    cursor: pointer;
+    padding: 0 10px;
+    border: 1px solid #fff;
+    transition: all .2s ease-in-out;
+
+    &:hover {
+      border: 1px solid transparent;
+      background-color: var(--main-yellow);
+      color: #000;
+    }
+  }
+
+  .filter__item.active {
+    color: #000;
+    border: 1px solid transparent;
+    background-color: var(--main-yellow);
+  }
+
+  .search {
+    margin-right: 20px;
+    background-color: transparent;
+    color: #fff;
+    border: 1px solid #fff;
+    font-family: var(--font-poppins);
+    transition: all .2s ease-in-out;
+    padding-left: 10px;
+
+    &:focus {
+      outline: 1px solid var(--main-yellow);
+      box-shadow: 0 0 10px var(--main-yellow);
     }
   }
 }
