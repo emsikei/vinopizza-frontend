@@ -1,4 +1,4 @@
-export function getAllCategories(products) {
+export function getAllUniqueCategories(products) {
     let allCategories = [];
     for (let product of products) {
         if (
@@ -17,4 +17,36 @@ export function getAllCategories(products) {
         }
     }
     return allCategories;
+}
+
+export function getCategoriesWithAllFilter(categories) {
+    // const newArr = [...categories];
+    // newArr.push(
+    //     {
+    //         translation: {
+    //             ro: {
+    //                 name: "Toate",
+    //             },
+    //             ru: {
+    //                 name: "Все"
+    //             }
+    //         }
+    //     }
+    // )
+
+    const initialObject = {
+        translation: {
+            ro: {
+                name: "Toate",
+            },
+            ru: {
+                name: "Все"
+            }
+        }
+    };
+
+    const newArr = [initialObject, ...categories]
+    console.log(newArr);
+
+    return newArr;
 }

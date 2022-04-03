@@ -1,0 +1,46 @@
+.confirm {
+  background-color: #fff;
+  height: 200px;
+  //display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 20px;
+  position: absolute;
+  display: none;
+  left: 37%;
+  z-index: 1000;
+
+  p {
+    color: #000;
+    z-index: 1000;
+  }
+
+  .buttons {
+
+    button {
+      background: none;
+      padding: 0 15px;
+      line-height: 1.7;
+      border: 1px solid #000;
+      font-family: var(--font-poppins);
+      z-index: 1000;
+      width: 60px;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    .no {
+      background-color: var(--main-yellow);
+    }
+    .yes {
+      margin-left: 10px;
+    }
+  }
+}
+
+.confirm.active {
+  display: flex;
+}

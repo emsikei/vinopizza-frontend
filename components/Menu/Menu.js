@@ -3,12 +3,10 @@ import {useState} from "react";
 import styles from "./Menu.module.scss";
 import Category from "./Category";
 import MenuItem from "./MenuItem";
-import {useContext} from "react";
-import {AppContext} from "../../contexts/AppContext";
-import {getAllCategories} from "../../helpers";
+import {getAllUniqueCategories} from "../../helpers";
 
 const Menu = () => {
-    const [categories, setCategories] = useState(getAllCategories(menu.products));
+    const [categories, setCategories] = useState(getAllUniqueCategories(menu.products));
     const [products, setProducts] = useState(menu.products);
 
     // const value = useContext(AppContext);

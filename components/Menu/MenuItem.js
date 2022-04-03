@@ -17,7 +17,7 @@ const MenuItem = ({product}) => {
                 return;
             }
         }
-        product.quantity = 1;
+        product.quantity = amount;
 
         setCart([...cart, product]);
         setAmount(1);

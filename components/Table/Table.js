@@ -3,6 +3,8 @@ import mockdata from "../data.json";
 import TableBody from "./TableBody";
 import TableHead from "./TableHead";
 
+// TODO: adjust the table to products and categories
+
 const Table = () => {
     const [tableData, setTableData] = useState(mockdata);
 
