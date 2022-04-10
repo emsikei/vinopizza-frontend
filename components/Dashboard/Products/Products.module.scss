@@ -13,19 +13,28 @@
   align-self: flex-start;
 
 
-  th:nth-child(-n+4) {
+  th:nth-child(-n+5) {
     cursor: pointer;
   }
 
-  .edit, .remove {
+  .edit, .remove, .status {
     cursor: pointer;
   }
 
   th, td {
     padding: 15px;
+    color: #fff;
   }
 
   .product__item {
+    .status__active {
+      color: var(--main-yellow);
+    }
+
+    .status__inactive {
+      color: var(--danger);
+    }
+
     .edit, .remove {
       cursor: pointer;
     }
@@ -42,6 +51,19 @@
   display: flex;
   color: #fff;
   align-self: self-end;
+
+  p {
+    margin: 0 20px 0 0;
+
+    a {
+      display: flex;
+      align-items: center;
+
+      span {
+        padding-left: 5px;
+      }
+    }
+  }
 
   .filter__item {
     margin-right: 20px;

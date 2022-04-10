@@ -17,18 +17,16 @@ const ProductItem = ({index, product, removeProduct}) => {
                 <td className={styles.name}>{product.translation.ro.name}</td>
                 <td className={styles.category}>{product.translation.ro.category}</td>
                 <td className={styles.price}>{product.price}</td>
+                <td>{product.isActive
+                    ? <span className={styles.status__active}>active</span>
+                    : <span className={styles.status__inactive}>inactive</span>}
+                </td>
                 <td className={styles.edit}
                     onClick={() => router.push({
                         pathname: `/dashboard/products/edit/${product._id}`,
                     })}
                 >
-
-
-                    {/*<Link href={`/dashboard/products/edit/${_id}`}>*/}
-                    {/*    <a><FaEdit/></a>*/}
-                    {/*</Link>*/}
                     <FaEdit/>
-
                 </td>
                 <td className={styles.remove} onClick={() => setShowDialog(!showDialog)}><FaTrashAlt/></td>
             </tr>

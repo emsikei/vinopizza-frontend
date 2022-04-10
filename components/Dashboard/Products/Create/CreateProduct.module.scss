@@ -1,3 +1,7 @@
+.heading {
+  padding-left: 30px;
+}
+
 .ro, .ru {
   display: flex;
   flex-direction: column;
@@ -27,6 +31,16 @@
     }
   }
 
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  input[type=number] {
+    -moz-appearance: textfield;
+  }
+
   option {
     color: #000;
     font-family: var(--font-poppins);
@@ -39,6 +53,50 @@
   textarea {
     resize: none;
   }
+
+  input[type=file] {
+    display: none;
+  }
+
+  input[type=checkbox] {
+    outline: none;
+  }
+
+  .status__wrapper {
+    input {
+      width: 20px;
+    }
+
+    input[type=checkbox]:checked {
+      color: #000;
+    }
+  }
+
+  .image__label {
+    display: flex;
+    align-items: center;
+    border: 1px solid #fff;
+    padding: 0 12px;
+    cursor: pointer;
+
+    span {
+      padding-left: 12px;
+    }
+  }
+
+  .image__wrapper {
+    width: 300px;
+    overflow: hidden;
+
+    .product__image {
+      max-width: 100%;
+      height: auto;
+    }
+  }
+}
+
+.ro {
+  //display: none;
 }
 
 .btn__create {

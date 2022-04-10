@@ -3,8 +3,9 @@ import menu from "../../../data/menu"
 import ProductItem from "./ProductItem";
 import styles from "./Products.module.scss"
 import {getAllUniqueCategories, getCategoriesWithAllFilter} from "../../../helpers";
-import Filter from "./Filter";
-import ConfirmDialog from "../../Modals/Confirm/ConfirmDialog";
+import Filter from "./Filter/Filter";
+import Link from "next/link"
+import {FaPlus} from "react-icons/fa"
 
 const ProductsList = () => {
     const [products, setProducts] = useState(menu.products);
@@ -25,7 +26,6 @@ const ProductsList = () => {
     }
 
     return (
-
         <>
             <div className={styles.container}>
                 <Filter categories={categories}
@@ -38,6 +38,7 @@ const ProductsList = () => {
                         <th>Name</th>
                         <th>Category</th>
                         <th>Price</th>
+                        <th>Status</th>
                         <th>Edit</th>
                         <th>Remove</th>
                     </tr>

@@ -1,11 +1,12 @@
 import React, {useState} from 'react';
 import FilterItem from "./FilterItem";
-import styles from "./Products.module.scss"
+import styles from "../Products.module.scss"
+import Link from "next/link";
+import {AiOutlinePlus} from "react-icons/ai";
 
 const Filter = ({categories, filterProducts}) => {
 
     const [active, setActive] = useState(0);
-    // const [query, setQuery] = useState("");
 
     const toggleActiveButton = (index) => {
         if (active === index) {
@@ -14,16 +15,15 @@ const Filter = ({categories, filterProducts}) => {
         setActive(index);
     }
 
-    // const handleInput = (e) => {
-    //     e.preventDefault();
-    //     setQuery(e.target.value);
-    // }
-
     return (
         <div className={styles.filter}>
 
-            {/*<input placeholder="Search" type="search" className={styles.search} onChange={(e) => handleInput(e)}/>*/}
-            
+            <p style={{color: "#f6c162"}}>
+                <Link href="products/create">
+                    <a><AiOutlinePlus/><span>New product</span></a>
+                </Link>
+            </p>
+
             {categories.map((category, index) => {
                 return (
                     <FilterItem key={category._id}

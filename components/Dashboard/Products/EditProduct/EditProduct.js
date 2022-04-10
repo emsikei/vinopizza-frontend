@@ -1,76 +1,28 @@
 import React, {useState} from 'react';
-import styles from "./CreateProduct.module.scss";
+import styles from "../Create/CreateProduct.module.scss";
 import ProductForm from "../../../Forms/ProductForm";
 
-const categories = [
-    {
-        translation: {
-            ru: {
-                name: "",
-            },
-            ro: {
-                name: "",
-            },
-        }
-    },
-    {
-        translation: {
-            ru: {
-                name: "Пицца",
-            },
-            ro: {
-                name: "Pizza",
-            },
-        },
-        _id: "62290b169115c3b3ad3647a6",
-        __v: 0,
-    },
-    {
-        translation: {
-            ru: {
-                name: "Вино",
-            },
-            ro: {
-                name: "Vin",
-            },
-        },
-        _id: "62290b639115c3b3ad3647a8",
-        __v: 0,
-    },
-    {
-        translation: {
-            ru: {
-                name: "Напитки",
-            },
-            ro: {
-                name: "Bauturi",
-            },
-        },
-        _id: "62290b639115c3b3ad3647a9",
-        __v: 0,
-    },
-];
+import menu from "../../../../data/menu"
 
+const EditProduct = ({product}) => {
+    const [nameRu, setNameRu] = useState(product.translation.ru.name);
+    const [nameRo, setNameRo] = useState(product.translation.ro.name);
 
-const CreateProduct = () => {
-    const [nameRu, setNameRu] = useState("");
-    const [nameRo, setNameRo] = useState("");
+    const [descriptionRo, setDescriptionRo] = useState(product.translation.ro.description);
+    const [descriptionRu, setDescriptionRu] = useState(product.translation.ru.description);
 
-    const [descriptionRu, setDescriptionRu] = useState("");
-    const [descriptionRo, setDescriptionRo] = useState("");
+    const [categoryRu, setCategoryRu] = useState(product.translation.ru.category);
+    const [categoryRo, setCategoryRo] = useState(product.translation.ro.category);
 
-    const [categoryRu, setCategoryRu] = useState("");
-    const [categoryRo, setCategoryRo] = useState("");
+    const [metricsRu, setMetricsRu] = useState(product.translation.ru.metrics);
+    const [metricsRo, setMetricsRo] = useState(product.translation.ro.metrics);
 
-    const [metricsRu, setMetricsRu] = useState("");
-    const [metricsRo, setMetricsRo] = useState("");
+    const [price, setPrice] = useState(product.price);
+    const [discount, setDiscount] = useState(product.discount);
 
-    const [price, setPrice] = useState(0);
-    const [discount, setDiscount] = useState(0);
+    const [isActive, setIsActive] = useState(product.isActive);
 
-    const [isActive, setIsActive] = useState(true);
-
-    const [imageURL, setImageURL] = useState("");
+    const [imageURL, setImageURL] = useState(product.image);
     const [image, setImage] = useState();
 
     const handleImageChange = (e) => {
@@ -169,6 +121,7 @@ const CreateProduct = () => {
 
     const [activeTab, setActiveTab] = useState("ro");
 
+
     return (
         <form onSubmit={handleSubmit}>
             <h2 className={styles.heading}>Creation of a new product:</h2>
@@ -195,18 +148,18 @@ const CreateProduct = () => {
                     ?
                     <ProductForm lang="ro"
                                  state={stateRo}
-                                 categories={categories}
+                                 categories={menu.categories}
                                  text={textRo}/>
                     :
                     <ProductForm lang="ru"
                                  state={stateRu}
-                                 categories={categories}
+                                 categories={menu.categories}
                                  text={textRu}/>
             }
 
-            <button type="submit" className={styles.btn__create}>Create</button>
+            <button type="submit" className={styles.btn__create}>Save</button>
         </form>
     );
 };
 
-export default CreateProduct;
+export default EditProduct;
