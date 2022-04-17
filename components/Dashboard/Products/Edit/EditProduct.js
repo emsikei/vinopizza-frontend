@@ -124,7 +124,7 @@ const EditProduct = ({product}) => {
 
     return (
         <form onSubmit={handleSubmit}>
-            <h2 className={styles.heading}>Creation of a new product:</h2>
+            <h2 className={styles.heading}>Edit the product:</h2>
 
             <div className={styles.languages}>
                 <button

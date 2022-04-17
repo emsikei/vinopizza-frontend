@@ -5,11 +5,38 @@ import styles from "./Products.module.scss"
 import {getAllUniqueCategories, getCategoriesWithAllFilter} from "../../../helpers";
 import Filter from "./Filter/Filter";
 import Link from "next/link"
-import {FaPlus} from "react-icons/fa"
+import {FaSortUp, FaSortDown, FaSort} from "react-icons/fa"
 
 const ProductsList = () => {
     const [products, setProducts] = useState(menu.products);
     const [categories, setCategories] = useState(getCategoriesWithAllFilter(getAllUniqueCategories(menu.products)))
+
+    const [currentSort, setCurrentSort] = useState('default');
+
+    const onSortChange = () => {
+        let nextSort;
+
+        if (currentSort === 'down') nextSort = 'up';
+        else if (currentSort === 'up') nextSort = 'default';
+        else if (currentSort === 'default') nextSort = 'down';
+
+        setCurrentSort(nextSort);
+    };
+
+    const sortTypes = {
+        up: {
+            component: <FaSortUp/>,
+            fn: (a, b) => Number(a.isActive) - Number(b.isActive)
+        },
+        down: {
+            component: <FaSortDown/>,
+            fn: (a, b) => Number(b.isActive) - Number(a.isActive)
+        },
+        default: {
+            component: <FaSort/>,
+            fn: (a, b) => a
+        }
+    };
 
     const filterProducts = (category) => {
         if (category === 'Toate') {
@@ -38,13 +65,18 @@ const ProductsList = () => {
                         <th>Name</th>
                         <th>Category</th>
                         <th>Price</th>
-                        <th>Status</th>
+                        <th onClick={onSortChange} className={styles.heading__status}>
+                            <span>Status</span>
+                            <span className={styles.sort__icon}>
+                                    {sortTypes[currentSort].component}
+                            </span>
+                        </th>
                         <th>Edit</th>
                         <th>Remove</th>
                     </tr>
                     </thead>
                     <tbody>
-                    {products.map((product, index) => {
+                    {[...products].sort(sortTypes[currentSort].fn).map((product, index) => {
                         return (<ProductItem key={product._id}
                                              index={index}
                                              product={product}

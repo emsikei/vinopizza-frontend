@@ -3,7 +3,6 @@ import styles from "./Products.module.scss"
 import {FaEdit, FaTrashAlt} from "react-icons/fa";
 import ConfirmDialog from "../../Modals/Confirm/ConfirmDialog";
 import {useRouter} from "next/router";
-import Link from "next/link"
 
 const ProductItem = ({index, product, removeProduct}) => {
     const [showDialog, setShowDialog] = useState(false);
@@ -28,7 +27,9 @@ const ProductItem = ({index, product, removeProduct}) => {
                 >
                     <FaEdit/>
                 </td>
-                <td className={styles.remove} onClick={() => setShowDialog(!showDialog)}><FaTrashAlt/></td>
+                <td className={styles.remove} onClick={() => setShowDialog(!showDialog)}>
+                    <FaTrashAlt/>
+                </td>
             </tr>
             <ConfirmDialog status={showDialog ? 'active' : ''}
                            item={product.translation.ro.name}/>

@@ -26,6 +26,17 @@
     color: #fff;
   }
 
+  .heading__status {
+    display: flex;
+    align-items: center;
+
+    .sort__icon {
+      display: flex;
+      align-items: center;
+      padding-left: 3px;
+    }
+  }
+
   .product__item {
     .status__active {
       color: var(--main-yellow);
