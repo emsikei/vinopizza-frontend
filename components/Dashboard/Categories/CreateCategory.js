@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import styles from "../Products/Create/CreateProduct.module.scss";
 import CategoryForm from "../../Forms/CategoryForm";
+import { useTabState } from '../../../hooks/tabHook';
+import LanguageTab from '../LanguageTab/LanguageTab';
 
 const CreateCategory = () => {
-    const [activeTab, setActiveTab] = useState("ro");
-    const [unactiveTab, setUnactiveTab] = useState("ru");
+    const { activeTab, setActiveTab, unactiveTab, setUnactiveTab } = useTabState();
+
     const [formErrors, setFormErrors] = useState({});
     const [isSubmit, setIsSubmit] = useState(false);
 
@@ -54,8 +56,8 @@ const CreateCategory = () => {
 
         if (!values.translation.ru.name) {
             errors.ru.name = "Название категории обязательно!"
-        } 
-        
+        }
+
         if (!values.translation.ro.name) {
             errors.ro.name = "Numele categories este obligatoriu!"
         }
@@ -75,28 +77,12 @@ const CreateCategory = () => {
         <form onSubmit={handleSubmit}>
             <h2 className={styles.heading}>Creation of a new category:</h2>
 
-            <div className={styles.languages}>
-                <button
-                    className={activeTab === "ro"
-                        ? `${styles.languages__btn} ${styles.active}`
-                        : `${styles.languages__btn}`}
-                    onClick={() => {
-                        setActiveTab("ro")
-                        setUnactiveTab("ru")
-                    }}>
-                    ro
-                </button>
-                <button
-                    className={activeTab === "ru"
-                        ? `${styles.languages__btn} ${styles.active}`
-                        : `${styles.languages__btn}`}
-                    onClick={() => {
-                        setActiveTab("ru")
-                        setUnactiveTab("ro")
-                    }}>
-                    ru
-                </button>
-            </div>
+            <LanguageTab
+                activeTab={activeTab}
+                setActiveTab={setActiveTab}
+                unactiveTab={unactiveTab}
+                setUnactiveTab={setUnactiveTab}
+            />
 
             {
                 activeTab === "ro"
