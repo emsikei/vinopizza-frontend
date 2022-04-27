@@ -1,17 +1,21 @@
-import Header from "../components/Header";
-import Intro from "../components/Intro";
-import HomeInfo from "../components/HomeInfo";
-import MenuContainer from "../components/MenuContainer";
-import Footer from "../components/Footer";
+import Header from "../components/Partials/Header";
+import Home from "../components/Landing/Home";
+import Menu from "../components/Menu/Menu";
+import Footer from "../components/Landing/Footer";
+import About from "../components/Landing/About";
+import Contact from "../components/Landing/Contact";
+import Services from "../components/Landing/Services";
 
 export default function HomePage() {
-  return (
-    <>
-      <Header />
-      <Intro />
-      <HomeInfo />
-      <MenuContainer />
-      <Footer />
-    </>
-  );
+    return (
+        <>
+            <Header/>
+            <Home/>
+            <Contact />
+            <About/>
+            <Services />
+            <Menu/>
+            <Footer/>
+        </>
+    );
 }

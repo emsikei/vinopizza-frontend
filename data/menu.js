@@ -1,139 +1,231 @@
 const menu = {
-  categories: [
-    {
-      translation: {
-        ru: {
-          name: "Пицца",
+    categories: [
+        {
+            translation: {
+                ru: {
+                    name: "Пицца",
+                },
+                ro: {
+                    name: "Pizza",
+                },
+            },
+            _id: "62290b169115c3b3ad3647a6",
+            __v: 0,
         },
-        ro: {
-          name: "Pizza",
+        {
+            translation: {
+                ru: {
+                    name: "Вино",
+                },
+                ro: {
+                    name: "Vin",
+                },
+            },
+            _id: "62290b639115c3b3ad3647a8",
+            __v: 0,
         },
-      },
-      _id: "62290b169115c3b3ad3647a6",
-      __v: 0,
-    },
-    {
-      translation: {
-        ru: {
-          name: "Вино",
+        {
+            translation: {
+                ru: {
+                    name: "Напитки",
+                },
+                ro: {
+                    name: "Bauturi",
+                },
+            },
+            _id: "62290b639115c3b3ad3647a9",
+            __v: 0,
         },
-        ro: {
-          name: "Vin",
+    ],
+    products: [
+        {
+            translation: {
+                ru: {
+                    name: "Пеперони",
+                    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia harum aspernatur in aut voluptates reprehenderit doloribus dolorum",
+                    category: "Пицца",
+                    metrics: "500 г",
+                },
+                ro: {
+                    name: "Peperoni",
+                    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia harum aspernatur in aut voluptates reprehenderit doloribus dolorum",
+                    category: "Pizza",
+                    metrics: "500 g",
+                },
+            },
+            _id: "6229cf4b45e8a1543d7e279f",
+            image: "/assets/images/test_pizza.jpg",
+            price: 200,
+            discount: 0,
+            isActive: false,
+            quantity: 1,
+            __v: 0,
         },
-      },
-      _id: "62290b639115c3b3ad3647a8",
-      __v: 0,
-    },
-    {
-      translation: {
-        ru: {
-          name: "Напитки",
+        {
+            translation: {
+                ru: {
+                    name: "Веган",
+                    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia harum aspernatur in aut voluptates reprehenderit doloribus dolorum",
+                    category: "Пицца",
+                    metrics: "500 г",
+
+                },
+                ro: {
+                    name: "Vegan",
+                    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+                    category: "Pizza",
+                    metrics: "500 g",
+
+                },
+            },
+            _id: "6229cf4b45e8a2743d7e279f",
+            image: "/assets/images/test_pizza.jpg",
+            price: 180,
+            isActive: false,
+            discount: 0,
+            quantity: 1,
+            __v: 0,
         },
-        ro: {
-          name: "Bauturi",
+        {
+            translation: {
+                ru: {
+                    name: "Маргарита",
+                    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia harum aspernatur in aut voluptates reprehenderit doloribus dolorum",
+                    category: "Пицца",
+                    metrics: "500 г",
+                },
+                ro: {
+                    name: "Margarita",
+                    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia harum aspernatur in aut voluptates reprehenderit doloribus dolorum",
+                    category: "Pizza",
+                    metrics: "500 g",
+
+                },
+            },
+            _id: "6229cf6845e8a1543d7e27a1",
+            image: "/assets/images/test_pizza.jpg",
+            price: 180,
+            isActive: false,
+            quantity: 1,
+            __v: 0,
         },
-      },
-      _id: "62290b639115c3b3ad3647a9",
-      __v: 0,
-    },
-  ],
-  products: [
-    {
-      translation: {
-        ru: {
-          name: "Пеперони",
-          description: "Описание",
-          category: "Пицца",
+        {
+            translation: {
+                ru: {
+                    name: "Sprite",
+                    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia harum aspernatur in aut voluptates reprehenderit doloribus dolorum",
+                    category: "Напитки",
+                    metrics: "500 мл",
+                },
+                ro: {
+                    name: "Sprite",
+                    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia harum aspernatur in aut voluptates reprehenderit doloribus dolorum",
+                    category: "Bauturi",
+                    metrics: "500 ml",
+                },
+            },
+            _id: "6229cf6845e8a1543d7e27a2",
+            image: "/assets/images/test_pizza.jpg",
+            price: 12,
+            quantity: 1,
+            discount: 0,
+            isActive: true,
+            __v: 0,
         },
-        ro: {
-          name: "Peperoni",
-          description: "description",
-          category: "Pizza",
+        {
+            translation: {
+                ru: {
+                    name: "4 сыра",
+                    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia harum aspernatur in aut voluptates reprehenderit doloribus dolorum",
+                    category: "Пицца",
+                    metrics: "500 г",
+                },
+                ro: {
+                    name: "4 cascavali",
+                    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia harum aspernatur in aut voluptates reprehenderit doloribus dolorum",
+                    category: "Pizza",
+                    metrics: "500 g",
+                },
+            },
+            _id: "6229cf6845e8a1543d7227a2",
+            image: "/assets/images/test_pizza.jpg",
+            price: 150,
+            discount: 0,
+            quantity: 1,
+            isActive: true,
+            __v: 0,
         },
-      },
-      _id: "6229cf4b45e8a1543d7e279f",
-      image: "dc1ccb12-c2ff-4712-a7c6-f7d25b9468ac.jpg",
-      price: "200",
-      metrics: "500 g",
-      __v: 0,
-    },
-    {
-      translation: {
-        ru: {
-          name: "Маргарита",
-          description: "Описание",
-          category: "Пицца",
+        {
+            translation: {
+                ru: {
+                    name: "Дьявольская",
+                    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia harum aspernatur in aut voluptates reprehenderit doloribus dolorum",
+                    category: "Пицца",
+                    metrics: "500 г",
+                },
+                ro: {
+                    name: "Diavola",
+                    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia harum aspernatur in aut voluptates reprehenderit doloribus dolorum",
+                    category: "Pizza",
+                    metrics: "500 g",
+                },
+            },
+            _id: "6229cf6845e8a1243d7227a2",
+            image: "/assets/images/test_pizza.jpg",
+            price: 150,
+            discount: 0,
+            quantity: 1,
+            isActive: true,
+            __v: 0,
         },
-        ro: {
-          name: "Margarita",
-          description: "description",
-          category: "Pizza",
+        {
+            translation: {
+                ru: {
+                    name: "Белое",
+                    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia harum aspernatur in aut voluptates reprehenderit doloribus dolorum",
+                    category: "Вино",
+                    metrics: "500 мл",
+
+                },
+                ro: {
+                    name: "Alb",
+                    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia harum aspernatur in aut voluptates reprehenderit doloribus dolorum",
+                    category: "Vin",
+                    metrics: "500 ml",
+                },
+            },
+            _id: "6229cf6845e8a1543d1e27a3",
+            image: "/assets/images/test_pizza.jpg",
+            price: 350,
+            quantity: 1,
+            discount: 0,
+            isActive: true,
+            __v: 0,
         },
-      },
-      _id: "6229cf6845e8a1543d7e27a1",
-      image: "e64e2aeb-6e45-4b7f-8f41-88a8e5817103.jpg",
-      price: "180",
-      metrics: "500 g",
-      __v: 0,
-    },
-    {
-      translation: {
-        ru: {
-          name: "Sprite",
-          description: "Напиток",
-          category: "Напитки",
-        },
-        ro: {
-          name: "Sprite",
-          description: "description",
-          category: "Bauturi",
-        },
-      },
-      _id: "6229cf6845e8a1543d7e27a2",
-      image: "e64e2aeb-6e45-4b7f-8f41-88a8e5817104.jpg",
-      price: "12",
-      metrics: "500 ml",
-      __v: 0,
-    },
-    {
-      translation: {
-        ru: {
-          name: "4 сыра",
-          description: "Описание",
-          category: "Пицца",
-        },
-        ro: {
-          name: "4 cascavali",
-          description: "Descriptie",
-          category: "Pizza",
-        },
-      },
-      _id: "6229cf6845e8a1543d7227a2",
-      image: "e64e2aeb-6e45-4b7f-8f41-88a8e5817104.jpg",
-      price: "150",
-      metrics: "0.5 kg",
-      __v: 0,
-    },
-    {
-      translation: {
-        ru: {
-          name: "Белое",
-          description: "Описание",
-          category: "Вино",
-        },
-        ro: {
-          name: "Alb",
-          description: "Descriptie",
-          category: "Vin",
-        },
-      },
-      _id: "6229cf6845e8a1543d1e27a3",
-      image: "e64e2aeb-6e45-4b7f-8f41-88a8e5817104.jpg",
-      price: "350",
-      metrics: "500 ml",
-      __v: 0,
-    },
-  ],
+        {
+            translation: {
+                ru: {
+                    name: "Красное",
+                    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia harum aspernatur in aut voluptates reprehenderit doloribus dolorum",
+                    category: "Вино",
+                    metrics: "500 мл",
+                },
+                ro: {
+                    name: "Rosu",
+                    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia harum aspernatur in aut voluptates reprehenderit doloribus dolorum",
+                    category: "Vin",
+                    metrics: "500 ml",
+                },
+            },
+            _id: "6229cf6845e8a24543d1e27a3",
+            image: "/assets/images/test_pizza.jpg",
+            price: 400,
+            quantity: 1,
+            discount: 0,
+            isActive: true,
+            __v: 0,
+        }
+    ],
 };
 
 export default menu;

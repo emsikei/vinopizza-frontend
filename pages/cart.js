@@ -1,5 +1,5 @@
-import Cart from "../components/Cart";
-import Header from "../components/Header";
+import Cart from "../components/Cart/Cart";
+import Header from "../components/Partials/Header";
 
 export default function CartPage() {
   return (

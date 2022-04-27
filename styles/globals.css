@@ -2,6 +2,7 @@
   /* ====== Colors ======*/
   --main-yellow: #f6c162;
   --gray: #a8aaaa;
+  --danger: #f33d00;
 
   /* ====== Fonts ======*/
   --font-poppins: "Poppins", Arial, sans-serif;
@@ -13,7 +14,7 @@ html,
 body {
   padding: 0;
   margin: 0;
-  background: url("../public/assets/images/background_texture.jpg") no-repeat fixed;
+  background: url("/assets/images/background_texture.jpg") no-repeat fixed;
   background-size: cover;
   font-family: var(--font-poppins);
   font-size: 15px;
@@ -24,6 +25,7 @@ body {
 .container {
   margin: 0 auto;
   max-width: 1340px;
+  /* padding: 0 80px; */
 }
 
 a {
