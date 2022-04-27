@@ -1,14 +1,19 @@
 import styles from "./HomeInfo.module.scss";
+import { useContext } from "react";
+import { AppContext } from "../../contexts/AppContext";
 
 const Services = () => {
+
+    const value = useContext(AppContext);
+    const [t, lang, changeLanguage] = value.lang;
+
     return (
         <div className={styles.services__wrapper}>
             <div className="container">
                 <div className={styles.services__heading}>
-                    <h2>Our Services</h2>
+                    <h2>{t.services.title}</h2>
                     <p>
-                        Far far away, behind the word mountains, far from the countries
-                        Vokalia and Consonantia, there live the blind texts.
+                        {t.services.subtitle}
                     </p>
                 </div>
 
@@ -17,30 +22,27 @@ const Services = () => {
                         <div className={styles.services__icon__wrapper}>
                             <span className="flaticon-diet"></span>
                         </div>
-                        <h3>Healthy Foods</h3>
+                        <h3>{t.services.first.heading}</h3>
                         <p>
-                            Even the all-powerful Pointing has no control about the blind
-                            texts it is an almost unorthographic.
+                            {t.services.first.subheading}
                         </p>
                     </div>
                     <div className={styles.services__item}>
                         <div className={styles.services__icon__wrapper}>
                             <span className="flaticon-bicycle"></span>
                         </div>
-                        <h3>Fastest Delivery</h3>
+                        <h3>{t.services.second.heading}</h3>
                         <p>
-                            Even the all-powerful Pointing has no control about the blind
-                            texts it is an almost unorthographic.
+                            {t.services.second.subheading}
                         </p>
                     </div>
                     <div className={styles.services__item}>
                         <div className={styles.services__icon__wrapper}>
                             <span className="flaticon-pizza-1"></span>
                         </div>
-                        <h3>Original Recipes</h3>
+                        <h3>O{t.services.third.heading}</h3>
                         <p>
-                            Even the all-powerful Pointing has no control about the blind
-                            texts it is an almost unorthographic.
+                            {t.services.third.subheading}
                         </p>
                     </div>
                 </div>

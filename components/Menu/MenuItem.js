@@ -1,12 +1,13 @@
 import styles from "./Menu.module.scss";
-import {BsCart3, BsPlusLg} from "react-icons/bs"
-import {BiMinus} from "react-icons/bi"
-import {useContext, useState} from "react";
-import {AppContext} from "../../contexts/AppContext";
+import { BsCart3, BsPlusLg } from "react-icons/bs"
+import { BiMinus } from "react-icons/bi"
+import { useContext, useState } from "react";
+import { AppContext } from "../../contexts/AppContext";
 
-const MenuItem = ({product}) => {
+const MenuItem = ({ product }) => {
     const value = useContext(AppContext);
     const [cart, setCart] = value.cart;
+    const [t, lang, changeLanguage] = value.lang;
 
     const [amount, setAmount] = useState(1);
 
@@ -38,27 +39,27 @@ const MenuItem = ({product}) => {
         <div className={styles.product__item}>
             <div className={styles.product__info}>
                 <div className={styles.product__image}>
-                    <img src={product.image} alt={product.translation.ro.name}/>
+                    <img src={product.image} alt={product.translation[lang].name} />
                 </div>
 
-                <h2>{product.translation.ro.name}</h2>
-                <span className={styles.metrics}>{product.metrics}</span>
-                <p>{product.translation.ro.description}</p>
+                <h2>{product.translation[lang].name}</h2>
+                <span className={styles.metrics}>{product.translation[lang].metrics}</span>
+                <p>{product.translation[lang].description}</p>
             </div>
             <div className={styles.product__footer}>
                 <div className={styles.price}>{product.price} L</div>
                 <div className={styles.buttons}>
                     <div className={styles.controls}>
                         <button onClick={decrementAmount}>
-                            <BiMinus/>
+                            <BiMinus />
                         </button>
                         <span className={styles.quantity}>{amount}</span>
                         <button onClick={incrementAmount}>
-                            <BsPlusLg/>
+                            <BsPlusLg />
                         </button>
                     </div>
                     <div className={styles.cart__btn} onClick={() => addToCart(product, product._id)}>
-                        <BsCart3/>
+                        <BsCart3 />
                     </div>
                 </div>
             </div>

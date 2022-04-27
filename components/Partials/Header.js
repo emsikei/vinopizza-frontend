@@ -5,12 +5,14 @@ import { useState, useContext } from "react";
 import { AppContext } from "../../contexts/AppContext";
 import { FaTwitter, FaFacebookF, FaInstagram } from "react-icons/fa";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const Header = ({ cartItemCount }) => {
   const [showMobileNav, setShowMobileNav] = useState(false);
 
   const value = useContext(AppContext);
   const [cart, setCart] = value.cart;
+  const [t, lang, changeLanguage] = value.lang;
 
   const toggleMobileNav = () => {
     setShowMobileNav(!showMobileNav);
@@ -18,6 +20,10 @@ const Header = ({ cartItemCount }) => {
 
   return (
     <header className={styles.header}>
+      <select onChange={changeLanguage}>
+        <option value="ro">ro</option>
+        <option value="ru">ru</option>
+      </select>
       <div className={`${styles.container} ${styles.header__container}`}>
         <button className={styles.burger__button} onClick={toggleMobileNav}>
           <FaBars />
@@ -29,27 +35,27 @@ const Header = ({ cartItemCount }) => {
           <ul className={styles.navbar__list}>
             <li className={styles.navbar__item}>
               <Link href="/">
-                <a>Home</a>
+                <a>{t.nav.home}</a>
               </Link>
             </li>
             <li className={styles.navbar__item}>
               <Link href="/">
-                <a>Menu</a>
+                <a>{t.nav.menu}</a>
               </Link>
             </li>
             <li className={styles.navbar__item}>
               <Link href="/">
-                <a>Services</a>
+                <a>{t.nav.services}</a>
               </Link>
             </li>
             <li className={styles.navbar__item}>
               <Link href="/">
-                <a>About</a>
+                <a>{t.nav.about}</a>
               </Link>
             </li>
             <li className={styles.navbar__item}>
               <Link href="/">
-                <a>Contact</a>
+                <a>{t.nav.contact}</a>
               </Link>
             </li>
           </ul>
@@ -76,27 +82,27 @@ const Header = ({ cartItemCount }) => {
         <ul>
           <li>
             <Link href="/">
-              <a>Home</a>
+              <a>{t.nav.home}</a>
             </Link>
           </li>
           <li>
             <Link href="/">
-              <a>Menu</a>
+              <a>{t.nav.menu}</a>
             </Link>
           </li>
           <li>
             <Link href="/">
-              <a>Services</a>
+              <a>{t.nav.services}</a>
             </Link>
           </li>
           <li>
             <Link href="/">
-              <a>About</a>
+              <a>{t.nav.about}</a>
             </Link>
           </li>
           <li>
             <Link href="/">
-              <a>Contact</a>
+              <a>{t.nav.contact}</a>
             </Link>
           </li>
           <ul className={styles.socials}>

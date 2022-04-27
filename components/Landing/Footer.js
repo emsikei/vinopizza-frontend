@@ -8,16 +8,21 @@ import {
   FaEnvelope,
 } from "react-icons/fa";
 
+import { AppContext } from "../../contexts/AppContext";
+import { useContext } from "react";
+
 const Footer = () => {
+  const value = useContext(AppContext);
+  const [t, lang, changeLanguage] = value.lang;
+
   return (
     <footer className={styles.footer}>
       <div className="container">
         <footer className={styles.footer__inner}>
           <div className={`${styles.about} ${styles.footer__item}`}>
-            <h2>About us</h2>
+            <h2>{t.footer.about.heading}</h2>
             <p>
-              Far far away, behind the word mountains, far from the countries
-              Vokalia and Consonantia, there live the blind texts.
+              {t.footer.about.text}
             </p>
             <div className={styles.socials}>
               <div>
@@ -39,23 +44,21 @@ const Footer = () => {
             </div>
           </div>
           <div className={`${styles.services} ${styles.footer__item}`}>
-            <h2>Services</h2>
+            <h2>{t.footer.services.heading}</h2>
             <ul>
-              <li>Cooked</li>
-              <li>Deliver</li>
-              <li>Quality Foods</li>
-              <li>Mixed</li>
+              <li>{t.footer.services.first}</li>
+              <li>{t.footer.services.second}</li>
             </ul>
           </div>
           <div className={`${styles.question} ${styles.footer__item}`}>
-            <h2>Have a quetion?</h2>
+            <h2>{t.footer.question.heading}</h2>
             <div className={styles.address}>
               <div className={styles.flex__container}>
                 <span>
                   <FaMapMarkerAlt />
                 </span>
                 <p>
-                  203 Fake St. Mountain View, San Francisco, California, USA
+                  {t.footer.question.address}
                 </p>
               </div>
             </div>
