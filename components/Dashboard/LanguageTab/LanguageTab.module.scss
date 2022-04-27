@@ -1,0 +1,32 @@
+.languages__heading {
+    margin-left: 30px;
+}
+
+.languages {
+    display: flex;
+    color: #fff;
+    margin-bottom: 20px;
+    margin-left: 30px;
+    width: 20%;
+
+    button {
+        background: none;
+        border: 1px solid #fff;
+        color: #fff;
+        cursor: pointer;
+        font-family: var(--font-poppins);
+    }
+
+    &__btn {
+        &:first-child {
+            //margin-right: 5px;
+            border-right: none;
+        }
+    }
+
+    &__btn.active {
+        color: #000;
+        background-color: var(--main-yellow);
+        border: 1px solid var(--main-yellow);
+    }
+}

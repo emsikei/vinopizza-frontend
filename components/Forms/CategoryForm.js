@@ -1,12 +1,12 @@
 import React from 'react';
-import styles from "../Dashboard/Products/Create/CreateProduct.module.scss"
+import styles from "./DashboardForms.module.scss"
 
 const CategoryForm = ({ lang, text, formValues, handleChange, formErrors }) => {
     return (
         <div className={styles[lang]}>
-            <pre>
+            {/* <pre>
                 {JSON.stringify(formValues, undefined, 2)}
-            </pre>
+            </pre> */}
             <label>{text.name}:</label>
             <input type="text"
                 value={formValues.translation[lang].name}

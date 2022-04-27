@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import styles from "../Products/Create/CreateProduct.module.scss";
+import styles from "./../../Forms/DashboardForms.module.scss"
 import CategoryForm from "../../Forms/CategoryForm";
 import { useTabState } from '../../../hooks/tabHook';
 import LanguageTab from '../LanguageTab/LanguageTab';
+import { validateCategory } from '../../../helpers';
 
 const EditCategory = ({ category }) => {
     const initialValues = { ...category };
@@ -40,8 +41,6 @@ const EditCategory = ({ category }) => {
         e.preventDefault();
         setFormErrors(validateCategory(formValues));
         setIsSubmit(true);
-
-        console.log(formValues);
     }
 
     useEffect(() => {
@@ -51,54 +50,40 @@ const EditCategory = ({ category }) => {
         }
     }, [formErrors])
 
-    const validateCategory = (values) => {
-        const errors = { ru: {}, ro: {} };
-        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
-
-        if (!values.translation.ru.name) {
-            errors.ru.name = "Название категории обязательно!"
-        }
-
-        if (!values.translation.ro.name) {
-            errors.ro.name = "Numele categories este obligatoriu!"
-        }
-
-        return errors;
-    }
-
     return (
-        <form onSubmit={handleSubmit}>
-            <h2 className={styles.heading}>Edit the category:</h2>
-
+        <div>
             <LanguageTab
+                heading="Edit the category"
                 activeTab={activeTab}
                 setActiveTab={setActiveTab}
                 unactiveTab={unactiveTab}
                 setUnactiveTab={setUnactiveTab}
             />
 
-            {
-                activeTab === "ro"
-                    ?
-                    <CategoryForm
-                        lang="ro"
-                        text={textRo}
-                        formValues={formValues}
-                        handleChange={handleChange}
-                        formErrors={formErrors}
-                    />
-                    :
-                    <CategoryForm
-                        lang="ru"
-                        text={textRu}
-                        formValues={formValues}
-                        handleChange={handleChange}
-                        formErrors={formErrors}
-                    />
-            }
+            <form onSubmit={handleSubmit}>
+                {
+                    activeTab === "ro"
+                        ?
+                        <CategoryForm
+                            lang="ro"
+                            text={textRo}
+                            formValues={formValues}
+                            handleChange={handleChange}
+                            formErrors={formErrors}
+                        />
+                        :
+                        <CategoryForm
+                            lang="ru"
+                            text={textRu}
+                            formValues={formValues}
+                            handleChange={handleChange}
+                            formErrors={formErrors}
+                        />
+                }
 
-            <button type="submit" className={styles.btn__create}>Save</button>
-        </form>
+                <button type="submit" className={styles.btn__create}>Save</button>
+            </form>
+        </div>
     );
 };
 
