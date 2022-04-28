@@ -1,9 +1,13 @@
 import styles from "./Login.module.scss"
-import {useState} from "react";
+import { useState, useContext } from "react";
+import { AppContext } from "../../contexts/AppContext";
 
 const Signin = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+
+    const value = useContext(AppContext);
+    const [t, lang, changeValue] = value.lang;
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -14,18 +18,18 @@ const Signin = () => {
     return (
         <div className={styles.signin}>
             <div className="container">
-                <h2 className={styles.heading}>Login</h2>
+                <h2 className={styles.heading}>{t.login.heading}</h2>
                 <form action="" className={styles.signin__form} onSubmit={handleSubmit}>
                     <input type="text"
-                           value={username}
-                           placeholder="Username"
-                           onChange={(e) => setUsername(e.target.value)}/>
+                        value={username}
+                        placeholder={t.login.username}
+                        onChange={(e) => setUsername(e.target.value)} />
                     <input type="password"
-                           value={password}
-                           placeholder="Password"
-                           onChange={(e) => setPassword(e.target.value)}/>
+                        value={password}
+                        placeholder={t.login.password}
+                        onChange={(e) => setPassword(e.target.value)} />
 
-                    <button type="submit" className={styles.btn}>Submit</button>
+                    <button type="submit" className={styles.btn}>{t.login.buttons.enter}</button>
                 </form>
             </div>
         </div>

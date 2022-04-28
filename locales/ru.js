@@ -103,5 +103,14 @@ export default {
             create: "Создать",
             save: "Сохранить"
         }
+    },
+    login: {
+        heading: "Вход в систему",
+        username: "Логин",
+        password: "Пароль",
+        buttons: {
+            enter: "Войти"
+        }
     }
+
 }

@@ -103,5 +103,13 @@ export default {
             create: "Crează",
             save: "Sălvează"
         }
+    },
+    login: {
+        heading: "Pagina login",
+        username: "Login",
+        password: "Parola",
+        buttons: {
+            enter: "Intră în sistem"
+        }
     }
 }
