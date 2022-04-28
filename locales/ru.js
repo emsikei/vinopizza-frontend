@@ -111,6 +111,23 @@ export default {
         buttons: {
             enter: "Войти"
         }
+    },
+    cart: {
+        count: "продукт(ов) в вашей корзине",
+        empty: "Корзина пуста",
+        heading: {
+            products: "Продукт(ы)",
+            price: "Цена",
+            quantity: "Количество",
+            total: "Всего"
+        },
+        order: {
+            heading: "Информация о заказе",
+            subtotal: "Промежуточная сумма",
+            delivery: "Доставка",
+            total: "Всего",
+            button: "Заказать"
+        }
     }
 
 }

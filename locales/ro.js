@@ -111,5 +111,21 @@ export default {
         buttons: {
             enter: "Intră în sistem"
         }
+    },
+    cart: {
+        count: "product(e) în coșul vostru",
+        empty: "Coșu este gol",
+        heading: {
+            products: "Product(e)",
+            price: "Preț",
+            quantity: "Cantitate",
+            total: "Total"
+        },
+        order: {
+            heading: "Informație despre comandă",
+            subtotal: "Subtotal",
+            delivery: "Livrare",
+            total: "Total"
+        }
     }
 }
