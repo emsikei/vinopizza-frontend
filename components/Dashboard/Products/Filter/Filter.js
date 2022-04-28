@@ -1,12 +1,15 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import FilterItem from "./FilterItem";
 import styles from "../Products.module.scss"
 import Link from "next/link";
 import {AiOutlinePlus} from "react-icons/ai";
+import { AppContext } from '../../../../contexts/AppContext';
 
 const Filter = ({categories, filterProducts}) => {
-
     const [active, setActive] = useState(0);
+
+    const value = useContext(AppContext);
+    const [t, lang, changeLanguage] = value.lang;
 
     const toggleActiveButton = (index) => {
         if (active === index) {
@@ -20,7 +23,7 @@ const Filter = ({categories, filterProducts}) => {
 
             <p style={{color: "#f6c162"}}>
                 <Link href="products/create">
-                    <a><AiOutlinePlus/><span>New product</span></a>
+                    <a><AiOutlinePlus/><span>{t.dashboard.products.inscriptions.createShort}</span></a>
                 </Link>
             </p>
 

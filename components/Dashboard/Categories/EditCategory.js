@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import styles from "./../../Forms/DashboardForms.module.scss"
 import CategoryForm from "../../Forms/CategoryForm";
 import { useTabState } from '../../../hooks/tabHook';
 import LanguageTab from '../LanguageTab/LanguageTab';
 import { validateCategory } from '../../../helpers';
+import { AppContext } from '../../../contexts/AppContext';
 
 const EditCategory = ({ category }) => {
     const initialValues = { ...category };
@@ -14,6 +15,9 @@ const EditCategory = ({ category }) => {
     const [isSubmit, setIsSubmit] = useState(false);
 
     const [formValues, setFormValues] = useState(initialValues);
+
+    const value = useContext(AppContext);
+    const [t, lang, changeLanguage] = value.lang;
 
     const textRo = {
         name: "Numele categoriei"
@@ -53,7 +57,7 @@ const EditCategory = ({ category }) => {
     return (
         <div>
             <LanguageTab
-                heading="Edit the category"
+                heading={t.dashboard.categories.inscriptions.edit}
                 activeTab={activeTab}
                 setActiveTab={setActiveTab}
                 unactiveTab={unactiveTab}
@@ -66,7 +70,6 @@ const EditCategory = ({ category }) => {
                         ?
                         <CategoryForm
                             lang="ro"
-                            text={textRo}
                             formValues={formValues}
                             handleChange={handleChange}
                             formErrors={formErrors}
@@ -74,14 +77,13 @@ const EditCategory = ({ category }) => {
                         :
                         <CategoryForm
                             lang="ru"
-                            text={textRu}
                             formValues={formValues}
                             handleChange={handleChange}
                             formErrors={formErrors}
                         />
                 }
 
-                <button type="submit" className={styles.btn__create}>Save</button>
+                <button type="submit" className={styles.btn__create}>{t.dashboard.buttons.save}</button>
             </form>
         </div>
     );

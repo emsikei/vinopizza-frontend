@@ -1,15 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import styles from "./../../Forms/DashboardForms.module.scss"
 import CategoryForm from "../../Forms/CategoryForm";
 import { useTabState } from '../../../hooks/tabHook';
 import LanguageTab from '../LanguageTab/LanguageTab';
 import { validateCategory } from '../../../helpers';
+import { AppContext } from '../../../contexts/AppContext';
 
 const CreateCategory = () => {
     const { activeTab, setActiveTab, unactiveTab, setUnactiveTab } = useTabState();
 
     const [formErrors, setFormErrors] = useState({});
     const [isSubmit, setIsSubmit] = useState(false);
+
+    const value = useContext(AppContext);
+    const [t, lang, changeLanguage] = value.lang;
 
     const initialValues = {
         "translation": {
@@ -51,18 +55,11 @@ const CreateCategory = () => {
         }
     }, [formErrors])
 
-    const textRo = {
-        name: "Numele categoriei"
-    }
-
-    const textRu = {
-        name: 'Название категории'
-    }
 
     return (
         <div>
             <LanguageTab
-                heading="Creation of a category"
+                heading={t.dashboard.categories.inscriptions.createLong}
                 activeTab={activeTab}
                 setActiveTab={setActiveTab}
                 unactiveTab={unactiveTab}
@@ -75,7 +72,6 @@ const CreateCategory = () => {
                         ?
                         <CategoryForm
                             lang="ro"
-                            text={textRo}
                             formValues={formValues}
                             handleChange={handleChange}
                             formErrors={formErrors}
@@ -83,14 +79,13 @@ const CreateCategory = () => {
                         :
                         <CategoryForm
                             lang="ru"
-                            text={textRu}
                             formValues={formValues}
                             handleChange={handleChange}
                             formErrors={formErrors}
                         />
                 }
 
-                <button type="submit" className={styles.btn__create}>Create</button>
+                <button type="submit" className={styles.btn__create}>{t.dashboard.buttons.create}</button>
             </form>
         </div>
     );

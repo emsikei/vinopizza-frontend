@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import ProductForm from "../../Forms/ProductForm";
 import { useTabState } from '../../../hooks/tabHook';
 import LanguageTab from '../LanguageTab/LanguageTab';
 import { validateProduct } from '../../../helpers';
 import styles from "./../../Forms/DashboardForms.module.scss"
+import { AppContext } from '../../../contexts/AppContext';
 
 const categories = [
     {
@@ -57,7 +58,6 @@ const EditProduct = ({ product }) => {
         ...commonValues
     });
 
-
     const [formErrors, setFormErrors] = useState({});
     const [isSubmit, setIsSubmit] = useState(false);
 
@@ -65,6 +65,9 @@ const EditProduct = ({ product }) => {
 
     const [imageURL, setImageURL] = useState("");
     const [image, setImage] = useState();
+
+    const value = useContext(AppContext);
+    const [t, lang, changeLanguage] = value.lang;
 
     const handleImageChange = (e) => {
         setImageURL(URL.createObjectURL(e.target.files[0]));
@@ -123,33 +126,10 @@ const EditProduct = ({ product }) => {
     }
 
 
-    const textRo = {
-        name: "Nume",
-        description: "Descripție",
-        category: "Categorie",
-        price: "Preț (lei)",
-        discount: "Reducere (%)",
-        metrics: "Măsură (g, kg, ml, l etc.)",
-        status: "Product este activ",
-        image: "Alegeți pictură"
-    }
-
-    const textRu = {
-        name: "Имя",
-        description: "Описание",
-        category: "Категория",
-        price: "Цена (лей)",
-        discount: "Скидка (%)",
-        metrics: "Измерения (г, кг, мл, л и тд)",
-        status: "Продукт активен",
-        image: "Выберите картинку"
-    }
-
-
     return (
         <div>
             <LanguageTab
-                heading="Edit the product:"
+                heading={t.dashboard.products.inscriptions.edit}
                 activeTab={activeTab}
                 setActiveTab={setActiveTab}
                 unactiveTab={unactiveTab}
@@ -159,10 +139,10 @@ const EditProduct = ({ product }) => {
                 {
                     activeTab === "ro"
                         ?
-                        <ProductForm lang="ro"
+                        <ProductForm
+                            lang="ro"
                             categories={categories}
                             currentCategory={translation.ro.category}
-                            text={textRo}
                             translationValues={translationValues}
                             productCommonValues={productCommonValues}
                             productChangesHandler={productChangesHandler}
@@ -171,10 +151,10 @@ const EditProduct = ({ product }) => {
                             formErrors={formErrors}
                         />
                         :
-                        <ProductForm lang="ru"
+                        <ProductForm
+                            lang="ru"
                             categories={categories}
                             currentCategory={translation.ru.category}
-                            text={textRu}
                             productCommonValues={productCommonValues}
                             translationValues={translationValues}
                             productChangesHandler={productChangesHandler}
@@ -184,7 +164,7 @@ const EditProduct = ({ product }) => {
                         />
                 }
 
-                <button type="submit" className={styles.btn__create}>Save</button>
+                <button type="submit" className={styles.btn__create}>{t.dashboard.buttons.save}</button>
             </form>
         </div>
     );

@@ -54,5 +54,54 @@ export default {
             heading: "Есть вопросы?",
             address: "ул. Августа"
         },
+    },
+    dashboard: {
+        products: {
+            table: {
+                all: "Все",
+                name: "Название",
+                category: "Категория",
+                price: "Цена",
+                status: "Статус",
+                edit: "Редактировать",
+                remove: "Удалить",
+                active: "активный",
+                inactive: "неактивный"
+            },
+            inscriptions: {
+                createShort: "Новый продукт",
+                createLong: "Создание нового продукта",
+                edit: "Редактировние продукта"
+            },
+            forms: {
+                name: "Имя",
+                description: "Описание",
+                category: "Категория",
+                price: "Цена (лей)",
+                discount: "Скидка (%)",
+                metrics: "Измерения (г, кг, мл, л и тд)",
+                status: "Продукт активен",
+                image: "Выберите картинку"
+            }
+        },
+        categories: {
+            table: {
+                name: "Название",
+                edit: "Редактировать",
+                remove: "Удалить",
+            },
+            inscriptions: {
+                createShort: "Новая категория",
+                createLong: "Создание новой категории",
+                edit: "Редактирование категории"
+            },
+            forms: {
+                name: "Название категории"
+            }
+        },
+        buttons: {
+            create: "Создать",
+            save: "Сохранить"
+        }
     }
 }

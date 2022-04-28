@@ -54,5 +54,54 @@ export default {
             heading: "Aveți întrebări?",
             address: "strada August"
         },
+    },
+    dashboard: {
+        products: {
+            table: {
+                all: "Toate",
+                name: "Nume",
+                category: "Categorie",
+                price: "Preț",
+                status: "Status",
+                edit: "Redactează",
+                remove: "Şterge",
+                active: "activ",
+                inactive: "inactiv"
+            },
+            inscriptions: {
+                createShort: "Product nou",
+                createLong: "Crearea produsului nou",
+                edit: "Redactarea produsului"
+            },
+            forms: {
+                name: "Nume",
+                description: "Descripție",
+                category: "Categorie",
+                price: "Preț (lei)",
+                discount: "Reducere (%)",
+                metrics: "Măsură (g, kg, ml, l etc.)",
+                status: "Product este activ",
+                image: "Alegeți pictură"
+            }
+        },
+        categories: {
+            table: {
+                name: "Nume",
+                edit: "Redactează",
+                remove: "Şterge",
+            },
+            inscriptions: {
+                createShort: "Categorie noua",
+                createLong: "Crearea categoriei noi",
+                edit: "Redactarea categoriei"
+            },
+            forms: {
+                name: "Numele categoriei"
+            }
+        },
+        buttons: {
+            create: "Crează",
+            save: "Sălvează"
+        }
     }
 }

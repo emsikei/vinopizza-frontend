@@ -1,12 +1,13 @@
 import React from 'react';
 import styles from "./DashboardForms.module.scss"
 import { FaCloudUploadAlt } from "react-icons/fa"
+import ru from '../../locales/ru';
+import ro from '../../locales/ro';
 
 const ProductForm = ({
     lang,
     categories,
     currentCategory,
-    text,
     productCommonValues,
     translationValues,
     productChangesHandler,
@@ -14,6 +15,8 @@ const ProductForm = ({
     isActive,
     formErrors
 }) => {
+    const t = lang === "ro" ? ro : ru;
+
     return (
         <div className={styles[lang]}>
 
@@ -21,7 +24,7 @@ const ProductForm = ({
                 {JSON.stringify(product, undefined, 2)}
             </pre> */}
 
-            <label>{text.name}:</label>
+            <label>{t.dashboard.products.forms.name}:</label>
             <input type="text"
                 value={translationValues.translation[lang].name}
                 onChange={productChangesHandler.translationValuesHandler}
@@ -29,7 +32,7 @@ const ProductForm = ({
             />
             <p style={{ color: "red" }}>{formErrors?.translation?.[lang]?.name}</p>
 
-            <label>{text.description}:</label>
+            <label>{t.dashboard.products.forms.description}:</label>
             <textarea type="text"
                 value={translationValues.translation[lang].description}
                 onChange={productChangesHandler.translationValuesHandler}
@@ -37,7 +40,7 @@ const ProductForm = ({
             />
             <p style={{ color: "red" }}>{formErrors?.translation?.[lang]?.description}</p>
 
-            <label>{text.category}: </label>
+            <label>{t.dashboard.products.forms.category}: </label>
             <select
                 name="category"
                 onChange={productChangesHandler.translationValuesHandler}>
@@ -57,7 +60,7 @@ const ProductForm = ({
             </select>
             <p style={{ color: "red" }}>{formErrors?.translation?.[lang]?.category}</p>
 
-            <label>{text.price}:</label>
+            <label>{t.dashboard.products.forms.price}:</label>
             <input type="number"
                 value={productCommonValues.price}
                 onChange={productChangesHandler.commonValuesHandler}
@@ -65,14 +68,14 @@ const ProductForm = ({
             />
             <p style={{ color: "red" }}>{formErrors?.price}</p>
 
-            <label>{text.discount}:</label>
+            <label>{t.dashboard.products.forms.discount}:</label>
             <input type="number"
                 value={productCommonValues.discount}
                 onChange={productChangesHandler.commonValuesHandler}
                 name="discount"
             />
 
-            <label>{text.metrics}:</label>
+            <label>{t.dashboard.products.forms.metrics}:</label>
             <input type="text"
                 value={translationValues.translation[lang].metrics}
                 onChange={productChangesHandler.translationValuesHandler}
@@ -80,7 +83,7 @@ const ProductForm = ({
             />
             <p style={{ color: "red" }}>{formErrors?.translation?.[lang]?.metrics}</p>
 
-            <div className={styles.status__wrapper}>{text.status}:
+            <div className={styles.status__wrapper}>{t.dashboard.products.forms.status}:
                 <input type="checkbox"
                     value={isActive}
                     id="status"
@@ -93,7 +96,7 @@ const ProductForm = ({
 
 
             <label htmlFor="file-upload" className={styles.image__label}>
-                <FaCloudUploadAlt /><span>{text.image}</span>:
+                <FaCloudUploadAlt /><span>{t.dashboard.products.forms.image}</span>:
             </label>
             <input type="file"
                 accept="image/png, image/jpeg"
