@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from "./DashboardForms.module.scss"
 import { FaCloudUploadAlt } from "react-icons/fa"
+import ErrorValidation from '../Helpers/Errors/ErrorValidation/ErrorValidation';
 import ru from '../../locales/ru';
 import ro from '../../locales/ro';
 
@@ -30,7 +31,7 @@ const ProductForm = ({
                 onChange={productChangesHandler.translationValuesHandler}
                 name="name"
             />
-            <p style={{ color: "red" }}>{formErrors?.translation?.[lang]?.name}</p>
+            <ErrorValidation text={formErrors?.translation?.[lang]?.name} />
 
             <label>{t.dashboard.products.forms.description}:</label>
             <textarea type="text"
@@ -38,7 +39,7 @@ const ProductForm = ({
                 onChange={productChangesHandler.translationValuesHandler}
                 name="description"
             />
-            <p style={{ color: "red" }}>{formErrors?.translation?.[lang]?.description}</p>
+            <ErrorValidation text={formErrors?.translation?.[lang]?.description} />
 
             <label>{t.dashboard.products.forms.category}: </label>
             <select
@@ -58,7 +59,7 @@ const ProductForm = ({
 
                 })}
             </select>
-            <p style={{ color: "red" }}>{formErrors?.translation?.[lang]?.category}</p>
+            <ErrorValidation text={formErrors?.translation?.[lang]?.category} />
 
             <label>{t.dashboard.products.forms.price}:</label>
             <input type="number"
@@ -66,7 +67,7 @@ const ProductForm = ({
                 onChange={productChangesHandler.commonValuesHandler}
                 name="price"
             />
-            <p style={{ color: "red" }}>{formErrors?.price}</p>
+            <ErrorValidation text={formErrors?.price} />
 
             <label>{t.dashboard.products.forms.discount}:</label>
             <input type="number"
@@ -81,7 +82,7 @@ const ProductForm = ({
                 onChange={productChangesHandler.translationValuesHandler}
                 name="metrics"
             />
-            <p style={{ color: "red" }}>{formErrors?.translation?.[lang]?.metrics}</p>
+            <ErrorValidation text={formErrors?.translation?.[lang]?.metrics} />
 
             <div className={styles.status__wrapper}>{t.dashboard.products.forms.status}:
                 <input type="checkbox"
@@ -92,8 +93,6 @@ const ProductForm = ({
                 />
                 <label htmlFor="status"></label>
             </div>
-
-
 
             <label htmlFor="file-upload" className={styles.image__label}>
                 <FaCloudUploadAlt /><span>{t.dashboard.products.forms.image}</span>:
@@ -106,7 +105,7 @@ const ProductForm = ({
             <div className={styles.image__wrapper}>
                 <img className={styles.product__image} src={imageUrl} />
             </div>
-            <p style={{ color: "red" }}>{formErrors?.image}</p>
+            <ErrorValidation text={formErrors?.image} />
         </div>
     );
 };

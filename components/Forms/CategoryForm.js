@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from "./DashboardForms.module.scss"
+import ErrorValidation from '../Helpers/Errors/ErrorValidation/ErrorValidation';
 import ru from '../../locales/ru';
 import ro from '../../locales/ro';
 
@@ -17,7 +18,7 @@ const CategoryForm = ({ lang, formValues, handleChange, formErrors }) => {
                 onChange={handleChange}
                 name="name"
             />
-            <p style={{color: "red"}}>{formErrors[lang]?.name}</p>
+            <ErrorValidation text={formErrors[lang]?.name}/>
         </div>
     );
 };

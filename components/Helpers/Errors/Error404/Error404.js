@@ -1,7 +1,7 @@
 import Link from "next/link";
-import styles from "./Error.module.scss"
+import styles from "./Error404.module.scss"
 
-const Error = () => {
+const Error404 = () => {
     return (
         <div className={styles.error}>
             <div className="container">
@@ -12,4 +12,4 @@ const Error = () => {
     );
 };
 
-export default Error;
+export default Error404;
