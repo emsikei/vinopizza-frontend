@@ -1,7 +1,12 @@
 import styles from "./HomeInfo.module.scss";
 import {FaClock, FaMapMarkerAlt, FaPhoneAlt} from "react-icons/fa";
+import { AppContext } from "../../contexts/AppContext";
+import { useContext } from "react";
 
 const Contact = () => {
+    const value = useContext(AppContext);
+    const [t, lang, changeLanguage] = value.lang;
+
     return (
         <div className={styles.wrapper}>
             <div className="container">
@@ -12,7 +17,7 @@ const Contact = () => {
                         </div>
                         <div className="info__item__content">
                             <h3>000 (123) 456 7890</h3>
-                            <p>A small river named Duden flows</p>
+                            <p>{t.contactData.telephone}</p>
                         </div>
                     </div>
                     <div className={styles.info__item}>
@@ -20,8 +25,8 @@ const Contact = () => {
                             <FaMapMarkerAlt color="var(--main-yellow)"/>
                         </div>
                         <div className="info__item__content">
-                            <h3>198 West 21th Street</h3>
-                            <p>Suite 721 New York NY 10016</p>
+                            <h3>{t.contactData.address}</h3>
+                            <p>{t.contactData.address}</p>
                         </div>
                     </div>
                     <div className={styles.info__item}>
@@ -30,7 +35,7 @@ const Contact = () => {
                         </div>
                         <div className="info__item__content">
                             <h3>Open Monday-Friday</h3>
-                            <p>8:00am - 9:00pm</p>
+                            <p>{t.contactData.time}</p>
                         </div>
                     </div>
                 </div>

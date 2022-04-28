@@ -6,6 +6,7 @@ import CartItem from "./CartItem";
 const Cart = () => {
   const value = useContext(AppContext);
   const [cart, setCart] = value.cart;
+  const [t, lang, changeLanguage] = value.lang;
 
   const incrementQuantity = (id) => {
     let newState = [...cart];
@@ -60,15 +61,15 @@ const Cart = () => {
         ) : (
           <>
             <h1 style={{ paddingLeft: "20px" }}>
-              {cart.length} items in your cart
+              {cart.length} {t.cart.count}
             </h1>
             <div className={styles.cart__inner}>
               <div className={styles.cart__list}>
                 <div className={styles.header}>
-                  <div className={styles.header__item}>Product(s)</div>
-                  <div className={styles.header__item}>Price</div>
-                  <div className={styles.header__item}>Quantity</div>
-                  <div className={styles.header__item}>Total</div>
+                  <div className={styles.header__item}>{t.cart.heading.products}</div>
+                  <div className={styles.header__item}>{t.cart.heading.price}</div>
+                  <div className={styles.header__item}>{t.cart.heading.quantity}</div>
+                  <div className={styles.header__item}>{t.cart.heading.total}</div>
                 </div>
                 <hr />
 
@@ -85,24 +86,24 @@ const Cart = () => {
                 })}
               </div>
               <div className={styles.subtotal__card__wrapper}>
-                <div>Order summary</div>
+                <div>{t.cart.order.heading}</div>
                 <div className={styles.subtotal__card}>
                   <div className={styles.subtotal}>
-                    <p>Subtotal: </p>
+                    <p>{t.cart.order.subtotal}: </p>
                     <span>{subtotal} L</span>
                   </div>
                   <div className={styles.delivery}>
-                    <p>Delivery: </p>
+                    <p>{t.cart.order.delivery}: </p>
                     <span>{subtotal >= 450 ? 0 : delivery} L</span>
                   </div>
                   <div className={styles.total}>
-                    <p>Total: </p>
+                    <p>{t.cart.order.total}: </p>
                     <span>
                       {subtotal >= 450 ? subtotal : subtotal + delivery} L
                     </span>
                   </div>
                 </div>
-                <button className={styles.btn__order}>Order</button>
+                <button className={styles.btn__order}>{t.cart.order.button}</button>
               </div>
             </div>
           </>
@@ -115,5 +116,9 @@ const Cart = () => {
 export default Cart;
 
 const EmptyCart = () => {
-  return <h1 style={{paddingLeft: 20}}>Your cart is empty</h1>;
+  const value = useContext(AppContext);
+  const [cart, setCart] = value.cart;
+  const [t, lang, changeLanguage] = value.lang;
+
+  return <h1 style={{ paddingLeft: 20 }}>{t.cart.empty}</h1>;
 };

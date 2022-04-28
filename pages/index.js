@@ -9,13 +9,13 @@ import Services from "../components/Landing/Services";
 export default function HomePage() {
     return (
         <>
-            <Header/>
-            <Home/>
+            <Header />
+            <Home />
             <Contact />
-            <About/>
+            <About />
             <Services />
-            <Menu/>
-            <Footer/>
+            <Menu />
+            <Footer />
         </>
     );
 }

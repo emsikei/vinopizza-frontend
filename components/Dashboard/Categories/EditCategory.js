@@ -1,22 +1,23 @@
-import React, {useState} from 'react';
-import styles from "../Products/Create/CreateProduct.module.scss";
+import React, { useState, useEffect, useContext } from 'react';
+import styles from "./../../Forms/DashboardForms.module.scss"
 import CategoryForm from "../../Forms/CategoryForm";
+import { useTabState } from '../../../hooks/tabHook';
+import LanguageTab from '../LanguageTab/LanguageTab';
+import { validateCategory } from '../../../helpers';
+import { AppContext } from '../../../contexts/AppContext';
 
-const EditCategory = ({category}) => {
-    const [nameRu, setNameRu] = useState(category.translation.ru.name);
-    const [nameRo, setNameRo] = useState(category.translation.ro.name);
+const EditCategory = ({ category }) => {
+    const initialValues = { ...category };
 
-    const [activeTab, setActiveTab] = useState("ro");
+    const { activeTab, setActiveTab, unactiveTab, setUnactiveTab } = useTabState();
 
-    const stateRu = {
-        name: nameRu,
-        setName: setNameRu
-    }
+    const [formErrors, setFormErrors] = useState({});
+    const [isSubmit, setIsSubmit] = useState(false);
 
-    const stateRo = {
-        name: nameRo,
-        setName: setNameRo
-    }
+    const [formValues, setFormValues] = useState(initialValues);
+
+    const value = useContext(AppContext);
+    const [t, lang, changeLanguage] = value.lang;
 
     const textRo = {
         name: "Numele categoriei"
@@ -26,58 +27,65 @@ const EditCategory = ({category}) => {
         name: 'Название категории'
     }
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
+    const handleChange = (e) => {
+        const prevState = { ...formValues.translation[unactiveTab] };
 
-        const category = {
+        setFormValues({
+            ...formValues,
             translation: {
-                ro: {
-                    name: nameRo,
-                },
-                ru: {
-                    name: nameRu,
+                [`${unactiveTab}`]: prevState,
+                [`${activeTab}`]: {
+                    name: e.target.value
                 }
-            },
-        }
-
-        console.log(category);
+            }
+        })
     }
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        setFormErrors(validateCategory(formValues));
+        setIsSubmit(true);
+    }
+
+    useEffect(() => {
+        console.log(formErrors);
+        if (Object.keys(formErrors).length === 0 && isSubmit) {
+            console.log(formValues);
+        }
+    }, [formErrors])
+
     return (
-        <form onSubmit={handleSubmit}>
-            <h2 className={styles.heading}>Edit the category:</h2>
+        <div>
+            <LanguageTab
+                heading={t.dashboard.categories.inscriptions.edit}
+                activeTab={activeTab}
+                setActiveTab={setActiveTab}
+                unactiveTab={unactiveTab}
+                setUnactiveTab={setUnactiveTab}
+            />
 
-            <div className={styles.languages}>
-                <button
-                    className={activeTab === "ro"
-                        ? `${styles.languages__btn} ${styles.active}`
-                        : `${styles.languages__btn}`}
-                    onClick={() => setActiveTab("ro")}>
-                    ro
-                </button>
-                <button
-                    className={activeTab === "ru"
-                        ? `${styles.languages__btn} ${styles.active}`
-                        : `${styles.languages__btn}`}
-                    onClick={() => setActiveTab("ru")}>
-                    ru
-                </button>
-            </div>
+            <form onSubmit={handleSubmit}>
+                {
+                    activeTab === "ro"
+                        ?
+                        <CategoryForm
+                            lang="ro"
+                            formValues={formValues}
+                            handleChange={handleChange}
+                            formErrors={formErrors}
+                        />
+                        :
+                        <CategoryForm
+                            lang="ru"
+                            formValues={formValues}
+                            handleChange={handleChange}
+                            formErrors={formErrors}
+                        />
+                }
 
-            {
-                activeTab === "ro"
-                    ?
-                    <CategoryForm lang="ro"
-                                  state={stateRo}
-                                  text={textRo}/>
-                    :
-                    <CategoryForm lang="ru"
-                                  state={stateRu}
-                                  text={textRu}/>
-            }
-
-            <button type="submit" className={styles.btn__create}>Save</button>
-        </form>
+                <button type="submit" className={styles.btn__create}>{t.dashboard.buttons.save}</button>
+            </form>
+        </div>
     );
 };
 
