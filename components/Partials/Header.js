@@ -5,7 +5,6 @@ import { useState, useContext } from "react";
 import { AppContext } from "../../contexts/AppContext";
 import { FaTwitter, FaFacebookF, FaInstagram } from "react-icons/fa";
 import Link from "next/link";
-import { useRouter } from "next/router";
 
 const Header = ({ cartItemCount }) => {
   const [showMobileNav, setShowMobileNav] = useState(false);
@@ -14,16 +13,18 @@ const Header = ({ cartItemCount }) => {
   const [cart, setCart] = value.cart;
   const [t, lang, changeLanguage] = value.lang;
 
+
   const toggleMobileNav = () => {
     setShowMobileNav(!showMobileNav);
   };
 
   return (
     <header className={styles.header}>
-      <select onChange={changeLanguage}>
+      {/* <select onChange={changeLanguage}>
         <option value="ro">ro</option>
         <option value="ru">ru</option>
-      </select>
+      </select> */}
+
       <div className={`${styles.container} ${styles.header__container}`}>
         <button className={styles.burger__button} onClick={toggleMobileNav}>
           <FaBars />
@@ -60,20 +61,28 @@ const Header = ({ cartItemCount }) => {
             </li>
           </ul>
         </nav>
-        <div className={styles.cart}>
-          <Link href="/cart" className={styles.cart__icon}>
-            <a>
-              <BsCart3
-                onMouseOver={({ target }) => (target.style.color = "#f6c162")}
-                onMouseOut={({ target }) => (target.style.color = "#a8aaaa")}
-              />
-            </a>
-          </Link>
-          <div className={styles.cart__count}>
-            <div>{cart.length}</div>
+        <div className={styles.header__right}>
+          <select className={styles.languages} defaultValue={lang} onChange={changeLanguage}>
+            <option className={styles.languages__ru} value="ru">&#127479;&#127482;</option>
+            <option className={styles.languages__ro} value="ro">&#127474;&#127465;</option>
+          </select>
+
+          <div className={styles.cart}>
+            <Link href="/cart" className={styles.cart__icon}>
+              <a>
+                <BsCart3
+                  onMouseOver={({ target }) => (target.style.color = "#f6c162")}
+                  onMouseOut={({ target }) => (target.style.color = "#a8aaaa")}
+                />
+              </a>
+            </Link>
+            <div className={styles.cart__count}>
+              <div>{cart.length}</div>
+            </div>
           </div>
         </div>
       </div>
+
       <nav
         className={
           showMobileNav ? styles.mobile__navbar__active : styles.mobile__navbar

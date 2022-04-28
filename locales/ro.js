@@ -125,7 +125,8 @@ export default {
             heading: "Informație despre comandă",
             subtotal: "Subtotal",
             delivery: "Livrare",
-            total: "Total"
+            total: "Total",
+            button: "Comandă"
         }
     }
 }

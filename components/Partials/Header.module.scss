@@ -106,6 +106,39 @@
   }
 }
 
+.header__right {
+  display: flex;
+  align-items: center;
+
+  .languages {
+    margin-right: 10px;
+    display: flex;
+    background-color: #121618;
+    border: none;
+    cursor: pointer;
+    color: var(--gray);
+
+    option {
+      display: inline-block;
+      width: 24px;
+      height: 24px;
+      overflow: hidden;
+      cursor: pointer;
+    }
+    &__ru {
+      background-image: url("/assets/icons/russia.png");
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+    &__ro {
+      background-image: url("/assets/icons/moldova.png");
+      background-repeat: no-repeat;
+      background-position: center;
+      margin-left: 3px;
+    }
+  }
+}
+
 .cart {
   margin-right: 20px;
   position: relative;
