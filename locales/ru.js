@@ -128,6 +128,21 @@ export default {
             total: "Всего",
             button: "Заказать"
         }
+    },
+    checkout: {
+        customerInfo: {
+            name: "Имя, Фамилия:",
+            city: "Город:",
+            address: {
+                street: "Улица:",
+                houseNumber: "Номер дома:",
+                flat: "Номер квартиры:",
+                entrance: "Подъезд:",
+                floor: "Этаж:",
+                codeIntercom: "Код домофона:",
+            },
+            phone: "Номер телефона:",
+        },
+        button: "Comandă"
     }
-
 }

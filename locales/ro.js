@@ -128,5 +128,21 @@ export default {
             total: "Total",
             button: "Comandă"
         }
+    },
+    checkout: {
+        customerInfo: {
+            name: "Nume, Prenume:",
+            city: "Oraș:",
+            address: {
+                street: "Strada:",
+                houseNumber: "Nr casei:",
+                flat: "Nr Apartament:",
+                entrance: "Intrare:",
+                floor: "Etaj:",
+                codeIntercom: "Codul interfonul:",
+            },
+            phone: "Telefon:",
+        },
+        button: "Comandă"
     }
 }

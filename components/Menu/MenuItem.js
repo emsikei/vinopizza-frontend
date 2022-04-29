@@ -11,6 +11,23 @@ const MenuItem = ({ product }) => {
 
     const [amount, setAmount] = useState(1);
 
+    const testFunc = (product, id) => {
+        const foundProduct = cart.find(item => item._id === id);
+
+        const copy = {...product};
+
+        if (foundProduct) {
+            foundProduct.quantity += amount;
+            console.log(foundProduct);
+        } else {
+            copy.quantity = amount;
+            console.log("PRODUCT NOT FOUND");
+            console.log(copy);
+        }
+
+        //TODO: updateState by findIndex 
+    }
+
     const addToCart = (product, id) => {
         for (let item of cart) {
             if (item._id === id) {
@@ -20,9 +37,15 @@ const MenuItem = ({ product }) => {
         }
         product.quantity = amount;
 
+        testFunc(product, "6229cf6845e8a1543d7e27a1");
+
         setCart([...cart, product]);
         setAmount(1);
+        
+        // testFunc(, "6229cf4b45e8a1543d7e279f");
     };
+
+
 
     const incrementAmount = () => {
         setAmount(amount + 1);
