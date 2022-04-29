@@ -24,7 +24,7 @@ export const AppProvider = (props) => {
       {
         cart: [cart, setCart],
         tab: [activeTab, setActiveTab],
-        lang: [t, locale, changeLanguage]
+        lang: [t, locale, changeLanguage],
       }
     }>
       {props.children}

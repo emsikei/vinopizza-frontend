@@ -1,11 +1,14 @@
 import "../styles/globals.css";
 import "../styles/flaticon.css";
-import {AppProvider} from "../contexts/AppContext";
+import { AppProvider } from "../contexts/AppContext";
+import { AuthProvider } from "../contexts/AuthContext";
 
-function MyApp({Component, pageProps}) {
+function MyApp({ Component, pageProps }) {
     return (
         <AppProvider>
-            <Component {...pageProps} />
+            <AuthProvider>
+                <Component {...pageProps} />
+            </AuthProvider>
         </AppProvider>
     );
 }
