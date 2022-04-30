@@ -5,6 +5,8 @@ import { useTabState } from '../../../hooks/tabHook';
 import LanguageTab from '../LanguageTab/LanguageTab';
 import { validateCategory } from '../../../helpers';
 import { AppContext } from '../../../contexts/AppContext';
+import axios from 'axios';
+import {useRouter} from "next/router"
 
 const CreateCategory = () => {
     const { activeTab, setActiveTab, unactiveTab, setUnactiveTab } = useTabState();
@@ -42,9 +44,27 @@ const CreateCategory = () => {
         })
     }
 
+    const router = useRouter();
+
     const handleSubmit = (e) => {
         e.preventDefault();
         setFormErrors(validateCategory(formValues));
+
+        if (Object.keys(formErrors).length === 0) {
+            axios.post(`http://localhost:5000/api/v1/categories`, formValues)
+                .then(response => {
+                    console.log("Status: ", response.status);
+                    console.log("Data: ", response.data);
+                })
+                .catch(e => {
+                    console.log("AXIOS ERROR!!!!!!!!!!!!")
+                    console.log(e);
+                })
+
+            router.push("/dashboard/categories")
+        }
+
+
         setIsSubmit(true);
     }
 

@@ -5,6 +5,8 @@ import { useTabState } from '../../../hooks/tabHook';
 import LanguageTab from '../LanguageTab/LanguageTab';
 import { validateCategory } from '../../../helpers';
 import { AppContext } from '../../../contexts/AppContext';
+import axios from "axios";
+
 
 const EditCategory = ({ category }) => {
     const initialValues = { ...category };
@@ -44,15 +46,32 @@ const EditCategory = ({ category }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         setFormErrors(validateCategory(formValues));
-        setIsSubmit(true);
+
+        console.log("FORM VALUES: ", formValues)
+
+        console.log("FORM ERRORS LENGTH: ",)
+
+        if (Object.keys(formErrors).length === 0) {
+            axios.put(`http://localhost:5000/api/v1/categories`, formValues)
+            .then(response => {
+                console.log("Status: ", response.status);
+                console.log("Data: ", response.data);
+            })
+            .catch(e => {
+                console.log("AXIOS ERROR!!!!!!!!!!!!")
+                console.log(e);
+            })
+        } 
+
+        // console.log(`http://localhost:5000/api/v1/categories/${formValues._id}`)
     }
 
-    useEffect(() => {
-        console.log(formErrors);
-        if (Object.keys(formErrors).length === 0 && isSubmit) {
-            console.log(formValues);
-        }
-    }, [formErrors])
+    // useEffect(() => {
+    //     console.log(formErrors);
+    //     if (Object.keys(formErrors).length === 0 && isSubmit) {
+    //         console.log(formValues);
+    //     }
+    // }, [formErrors])
 
     return (
         <div>
