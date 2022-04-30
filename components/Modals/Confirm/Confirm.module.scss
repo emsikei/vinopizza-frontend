@@ -1,46 +1,123 @@
-.confirm {
-  background-color: #fff;
-  height: 200px;
-  //display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  padding: 0 20px;
-  position: absolute;
-  display: none;
-  left: 37%;
-  z-index: 1000;
+// .confirm {
+//   background-color: #fff;
+//   height: 200px;
+//   //display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   flex-direction: column;
+//   padding: 0 20px;
+//   position: absolute;
+//   display: none;
+//   left: 37%;
+//   z-index: 1000;
 
-  p {
-    color: #000;
-    z-index: 1000;
+//   p {
+//     color: #000;
+//     z-index: 1000;
+//   }
+
+//   .buttons {
+
+//     button {
+//       background: none;
+//       padding: 0 15px;
+//       line-height: 1.7;
+//       border: 1px solid #000;
+//       font-family: var(--font-poppins);
+//       z-index: 1000;
+//       width: 60px;
+
+//       &:hover {
+//         cursor: pointer;
+//       }
+//     }
+
+//     .no {
+//       background-color: var(--main-yellow);
+//     }
+//     .yes {
+//       margin-left: 10px;
+//     }
+//   }
+// }
+
+// .confirm.active {
+//   display: flex;
+// }
+
+.confirm {
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.4);
+  position: fixed;
+  left: 0;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.3s;
+
+  &.active {
+    opacity: 1;
+    pointer-events: all;
   }
 
-  .buttons {
+  &__content {
+    padding: 20px;
+    border-radius: 12px;
+    background-color: #fff;
+    // height: 200px;
+    width: 30vw;
+    transform: scale(0.5);
+    transition: 0.3s all;
 
-    button {
-      background: none;
-      padding: 0 15px;
-      line-height: 1.7;
-      border: 1px solid #000;
-      font-family: var(--font-poppins);
-      z-index: 1000;
-      width: 60px;
+    &.active {
+      transform: scale(1);
+    }
 
-      &:hover {
-        cursor: pointer;
+    &__inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      p {
+        text-align: center;
+        color: #000;
+      }
+
+      .buttons {
+        button {
+          background: none;
+          padding: 0 15px;
+          line-height: 1.7;
+          border: 1px solid #000;
+          font-family: var(--font-poppins);
+          z-index: 1000;
+          width: 60px;
+
+          &:hover {
+            cursor: pointer;
+          }
+        }
+
+        .no {
+          background-color: var(--main-yellow);
+        }
+        .yes {
+          margin-left: 10px;
+        }
       }
     }
+  }
 
-    .no {
-      background-color: var(--main-yellow);
-    }
-    .yes {
-      margin-left: 10px;
+  &__header {
+    display: flex;
+    justify-content: flex-end;
+
+    .confirm__close {
+      cursor: pointer;
     }
   }
-}
-
-.confirm.active {
-  display: flex;
 }
