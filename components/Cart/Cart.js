@@ -2,11 +2,14 @@ import { useContext } from "react";
 import { AppContext } from "../../contexts/AppContext";
 import styles from "./Cart.module.scss";
 import CartItem from "./CartItem";
+import { useRouter } from "next/router";
 
 const Cart = () => {
   const value = useContext(AppContext);
   const [cart, setCart] = value.cart;
   const [t, lang, changeLanguage] = value.lang;
+
+  const router = useRouter();
 
   const incrementQuantity = (id) => {
     let newState = [...cart];
@@ -103,7 +106,7 @@ const Cart = () => {
                     </span>
                   </div>
                 </div>
-                <button className={styles.btn__order}>{t.cart.order.button}</button>
+                <button className={styles.btn__order} onClick={() => router.push("/cart/checkout")}>{t.cart.order.button}</button>
               </div>
             </div>
           </>

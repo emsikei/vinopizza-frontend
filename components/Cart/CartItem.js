@@ -12,11 +12,13 @@ const CartItem = ({
   const value = useContext(AppContext);
   const [t, lang, changelLanguage] = value.lang;
 
+  const imgsrc = "/assets/images/products/" + item.image;
+
   return (
     <>
       <div className={styles.cart__item}>
         <div className={styles.cart__item__image}>
-          <img src={item.image} alt={item.translation[lang].name} />
+          <img src={imgsrc} alt={item.translation[lang].name} />
         </div>
         <div className={styles.cart__item__info}>
           <div className={styles.cart__item__name}>{item.translation[lang].name}</div>
