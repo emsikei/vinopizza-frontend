@@ -6,10 +6,11 @@ import { getAllUniqueCategories, getCategoriesWithAllFilter } from "../../../hel
 import Filter from "./Filter/Filter";
 import { FaSortUp, FaSortDown, FaSort } from "react-icons/fa"
 import { AppContext } from '../../../contexts/AppContext';
+import axios from 'axios';
 
-const ProductsList = () => {
-    const [products, setProducts] = useState(menu.products);
-    const [categories, setCategories] = useState(getCategoriesWithAllFilter(getAllUniqueCategories(menu.products)))
+const ProductsList = ({ _products, _categories }) => {
+    const [products, setProducts] = useState(_products);
+    const [categories, setCategories] = useState(getCategoriesWithAllFilter(_categories))
 
     const value = useContext(AppContext);
     const [t, lang, changeLanguge] = value.lang;
@@ -42,18 +43,24 @@ const ProductsList = () => {
     };
 
     const filterProducts = (category) => {
-        if (category === 'Toate' || category === "Все") {
-            setProducts(menu.products);
+        if (category.translation.ro.name === 'Toate' || category.translation.ru.name === "Все") {
+            setProducts(_products);
             return;
         }
-        const newProducts = menu.products.filter((item) => item.translation[lang].category === category);
+        const newProducts = products.filter(item => item.category === category._id);
         setProducts(newProducts);
     };
 
-    const removeProduct = (id) => {
-        const newState = products.filter(product => product._id !== id);
-        setProducts(newState);
-    }
+    const deleteProduct = (id, products, setProducts, setActive) => {
+        axios.delete(`http://localhost:5000/api/v1/products/${id}`).then(res => {
+            console.log(res.data);
+        });
+
+        const newState = products.filter(category => category._id !== id);
+        setProducts([...newState])
+
+        setActive(false);
+    };
 
     return (
         <>
@@ -80,10 +87,15 @@ const ProductsList = () => {
                     </thead>
                     <tbody>
                         {[...products].sort(sortTypes[currentSort].fn).map((product, index) => {
-                            return (<ProductItem key={product._id}
-                                index={index}
-                                product={product}
-                                removeProduct={removeProduct} />);
+                            return (
+                                <ProductItem key={product._id}
+                                    index={index}
+                                    product={product}
+                                    products={products}
+                                    categories={_categories}
+                                    setProducts={setProducts}
+                                    deleteProduct={deleteProduct} />
+                            );
                         })}
                     </tbody>
                 </table>

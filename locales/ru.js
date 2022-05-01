@@ -144,5 +144,10 @@ export default {
             phone: "Номер телефона:",
         },
         button: "Comandă"
+    },
+    confirmDialog: {
+        text: "Вы уверены, что хотите удалить",
+        yes: "Да",
+        no: "Нет"
     }
 }

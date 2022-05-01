@@ -22,14 +22,14 @@ const Filter = ({categories, filterProducts}) => {
         <div className={styles.filter}>
 
             <p style={{color: "#f6c162"}}>
-                <Link href="products/create">
+                <Link href="/dashboard/products/create">
                     <a><AiOutlinePlus/><span>{t.dashboard.products.inscriptions.createShort}</span></a>
                 </Link>
             </p>
 
             {categories.map((category, index) => {
                 return (
-                    <FilterItem key={category._id}
+                    <FilterItem key={index}
                                 category={category}
                                 filterProducts={filterProducts}
                                 active={active}

@@ -144,5 +144,10 @@ export default {
             phone: "Telefon:",
         },
         button: "Comandă"
+    },
+    confirmDialog: {
+        text: "Sunteți siguri că vreți sa ștergeți",
+        yes: "Da",
+        no: "Nu"
     }
 }

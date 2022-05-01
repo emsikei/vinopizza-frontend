@@ -44,14 +44,16 @@ const ProductForm = ({
             <label>{t.dashboard.products.forms.category}: </label>
             <select
                 name="category"
-                onChange={productChangesHandler.translationValuesHandler}>
+                onChange={productChangesHandler.commonValuesHandler}>
                 <option value={currentCategory} selected>{translationValues.translation[lang].category}
                 </option>
                 {categories.map((category, index) => {
                     if (category.translation[lang].name !== translationValues.translation[lang].category) {
                         return (
-                            <option key={index}
-                                value={category.translation[lang].name}>
+                            <option
+                                key={index}
+                                value={category._id}
+                            >
                                 {category.translation[lang].name}
                             </option>
                         );

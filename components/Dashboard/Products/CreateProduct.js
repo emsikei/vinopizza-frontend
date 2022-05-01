@@ -6,47 +6,52 @@ import { PRODUCT_COMMON, PRODUCT_TRANSLATION } from '../../../states/productStat
 import { validateProduct } from '../../../helpers';
 import styles from "./../../Forms/DashboardForms.module.scss"
 import { AppContext } from '../../../contexts/AppContext';
+import axios from "axios"
 
-const categories = [
-    {
-        translation: {
-            ru: {
-                name: "Пицца",
-            },
-            ro: {
-                name: "Pizza",
-            },
-        },
-        _id: "62290b169115c3b3ad3647a6",
-        __v: 0,
-    },
-    {
-        translation: {
-            ru: {
-                name: "Вино",
-            },
-            ro: {
-                name: "Vin",
-            },
-        },
-        _id: "62290b639115c3b3ad3647a8",
-        __v: 0,
-    },
-    {
-        translation: {
-            ru: {
-                name: "Напитки",
-            },
-            ro: {
-                name: "Bauturi",
-            },
-        },
-        _id: "62290b639115c3b3ad3647a9",
-        __v: 0,
-    },
-];
+// const categories = [
+//     {
+//         translation: {
+//             ru: {
+//                 name: "Пицца",
+//             },
+//             ro: {
+//                 name: "Pizza",
+//             },
+//         },
+//         _id: "62290b169115c3b3ad3647a6",
+//         __v: 0,
+//     },
+//     {
+//         translation: {
+//             ru: {
+//                 name: "Вино",
+//             },
+//             ro: {
+//                 name: "Vin",
+//             },
+//         },
+//         _id: "62290b639115c3b3ad3647a8",
+//         __v: 0,
+//     },
+//     {
+//         translation: {
+//             ru: {
+//                 name: "Напитки",
+//             },
+//             ro: {
+//                 name: "Bauturi",
+//             },
+//         },
+//         _id: "62290b639115c3b3ad3647a9",
+//         __v: 0,
+//     },
+// ];
 
-const CreateProduct = () => {
+const CreateProduct = ({ _categories }) => {
+
+    // TODO: add isActive field to backend
+    // TODO: connect createProduct to backend
+
     const { activeTab, setActiveTab, unactiveTab, setUnactiveTab } = useTabState();
 
     const [translationValues, setTranslationValues] = useState({
@@ -104,15 +109,28 @@ const CreateProduct = () => {
         const product = {
             ...translationValues,
             ...productCommonValues,
-            isActive,
-            image
+            // isActive,
+            // image
         }
 
-        setFormErrors(validateProduct(product));
-        setIsSubmit(true);
+        const price = parseInt(product.price)
+        product.price = price;
 
-        // console.log(formErrors);
-        // console.log(product);
+        setFormErrors(validateProduct(product));
+
+        const formData = new FormData();
+        formData.append("image", image);
+        formData.append("data", JSON.stringify(product));
+
+        if (Object.keys(formErrors).length === 0) {
+            fetch("http://localhost:5000/api/v1/products",
+                {
+                    body: formData,
+                    method: "post"
+                });
+
+            router.push("/dashboard/products")
+        }
     }
 
     const productChangesHandler = {
@@ -136,8 +154,8 @@ const CreateProduct = () => {
                     activeTab === "ro"
                         ?
                         <ProductForm
-                            lang={lang}
-                            categories={categories}
+                            lang={"ro"}
+                            categories={_categories}
                             currentCategory={""}
                             translationValues={translationValues}
                             productCommonValues={productCommonValues}
@@ -148,8 +166,8 @@ const CreateProduct = () => {
                         />
                         :
                         <ProductForm
-                            lang={lang}
-                            categories={categories}
+                            lang={"ru"}
+                            categories={_categories}
                             currentCategory={""}
                             productCommonValues={productCommonValues}
                             translationValues={translationValues}

@@ -10,7 +10,7 @@ const FilterItem = ({category, filterProducts, active, toggleActiveButton, index
     return (
         <div className={active === index ? `${styles.filter__item} ${styles.active}` : `${styles.filter__item}`}
             onClick={() => {
-                filterProducts(category.translation[lang].name)
+                filterProducts(category)
                 toggleActiveButton(index);
             }}>
             {category.translation[lang].name}
