@@ -29,12 +29,12 @@ const CartItem = ({
           <div className={styles.button__wrapper}>
             <button onClick={() => decrementQuantity(item._id)}>-</button>
           </div>
-          <div>{item.quantity}</div>
+          <div>{item.amount}</div>
           <div className={styles.button__wrapper}>
             <button onClick={() => incrementQuantity(item._id)}>+</button>
           </div>
         </div>
-        <div className={styles.cart__item__total}>{item.price * item.quantity}</div>
+        <div className={styles.cart__item__total}>{item.price * item.amount}</div>
         <div className={styles.cart__item__remove}>
           <button onClick={() => removeItem(item._id)}>
             <CgClose />

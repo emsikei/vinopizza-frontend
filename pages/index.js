@@ -6,7 +6,7 @@ import About from "../components/Landing/About";
 import Contact from "../components/Landing/Contact";
 import Services from "../components/Landing/Services";
 
-export default function HomePage() {
+const HomePage = ({ menu }) => {
     return (
         <>
             <Header />
@@ -14,8 +14,22 @@ export default function HomePage() {
             <Contact />
             <About />
             <Services />
-            <Menu />
+            <Menu menu={menu}/>
             <Footer />
         </>
     );
+}
+
+export default HomePage;
+
+export async function getStaticProps(context) {
+    const response = await fetch(`http://localhost:5000/api/v1/menu`)
+    const menu = await response.json();
+
+    return {
+        props: {
+            menu
+        }, // will be passed to the page component as props
+        revalidate: 10
+    }
 }

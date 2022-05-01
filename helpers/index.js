@@ -21,6 +21,7 @@ export const getAllUniqueCategories = (products) => {
 
 export const getCategoriesWithAllFilter = (categories) => {
     const initialObject = {
+        _id: "123",
         translation: {
             ro: {
                 name: "Toate",
@@ -32,8 +33,7 @@ export const getCategoriesWithAllFilter = (categories) => {
     };
 
     const newArr = [initialObject, ...categories]
-    console.log(newArr);
-
+    
     return newArr;
 }
 
@@ -58,16 +58,9 @@ export const validateProduct = (values) => {
             ru: {}
         },
         price: 0,
+        category: "",
         image: null
      };
-
-    if (!values.translation.ru.category) {
-        errors.translation.ru.category = "Выберите категорию обязательно!"
-    }
-
-    if (!values.translation.ro.category) {
-        errors.translation.ro.category = "Alegerea categoriei este obligatoriu!"
-    }
 
     if (!values.translation.ru.name) {
         errors.translation.ru.name = "Введите название продукта!"
@@ -99,6 +92,10 @@ export const validateProduct = (values) => {
 
     if (!values.image) {
         errors.image = "Alegeți imagine!"
+    }
+
+    if (!values.category) {
+        errors.category = "Alegeți categorie!"
     }
 
     return errors;

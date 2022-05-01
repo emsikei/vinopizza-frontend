@@ -10,51 +10,52 @@ const MenuItem = ({ product }) => {
     const [cart, setCart] = value.cart;
     const [t, lang, changeLanguage] = value.lang;
 
-    const [amount, setAmount] = useState(1);
-
-    const testFunc = (product, id) => {
-        const foundProduct = cart.find(item => item._id === id);
-
-        const copy = { ...product };
-
-        if (foundProduct) {
-            foundProduct.quantity += amount;
-            console.log(foundProduct);
-        } else {
-            copy.quantity = amount;
-            console.log("PRODUCT NOT FOUND");
-            console.log(copy);
-        }
-
-        //TODO: updateState by findIndex 
-    }
+    const [currentAmount, setAmount] = useState(1);
 
     const addToCart = (product, id) => {
         for (let item of cart) {
             if (item._id === id) {
-                product.quantity += amount;
+                product.amount += currentAmount;
                 return;
             }
         }
-        product.quantity = amount;
-
-        testFunc(product, "6229cf6845e8a1543d7e27a1");
+        product.amount = currentAmount;
 
         setCart([...cart, product]);
         setAmount(1);
 
-        // testFunc(, "6229cf4b45e8a1543d7e279f");
+        // const indexOfProductToUpdate = cart.findIndex(item => item._id === id);
+
+        // const newCart = [...cart];
+        // let copyProduct = {...product}
+
+        // if(indexOfProductToUpdate === -1) {
+        //     copyProduct.amount = currentAmount;
+        //     const indexOfProductToAdd = cart.findIndex(item => item._id === id);
+        //     // newCart[indexOfProductToAdd] = copyProduct;
+        //     newCart.push(copyProduct);
+        //     setCart([...newCart])
+        // } else {
+        //     copyProduct.amount += currentAmount;
+        //     newCart[indexOfProductToUpdate] = copyProduct;
+        //     console.log(typeof(copyProduct.amount), typeof(currentAmount))
+        //     setCart([...newCart]);
+        // }
+        // console.log(currentAmount)
+
+        // setAmount(1);
+
     };
 
     const incrementAmount = () => {
-        setAmount(amount + 1);
+        setAmount(currentAmount + 1);
     }
 
     const decrementAmount = () => {
-        if (amount === 1) {
+        if (currentAmount === 1) {
             return;
         }
-        setAmount(amount - 1);
+        setAmount(currentAmount - 1);
     }
 
     const imgsrc = "/assets/images/products/" + product.image;
@@ -63,7 +64,6 @@ const MenuItem = ({ product }) => {
         <div className={styles.product__item}>
             <div className={styles.product__info}>
                 <div className={styles.product__image}>
-                    {console.log(product.image)}
                     <img
                         src={imgsrc}
                         alt={product.translation[lang].name}/>
@@ -80,7 +80,7 @@ const MenuItem = ({ product }) => {
                         <button onClick={decrementAmount}>
                             <BiMinus />
                         </button>
-                        <span className={styles.quantity}>{amount}</span>
+                        <span className={styles.amount}>{currentAmount}</span>
                         <button onClick={incrementAmount}>
                             <BsPlusLg />
                         </button>

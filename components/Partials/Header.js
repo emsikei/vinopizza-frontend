@@ -11,6 +11,7 @@ const Header = ({ cartItemCount }) => {
 
   const value = useContext(AppContext);
   const [cart, setCart] = value.cart;
+
   const [t, lang, changeLanguage] = value.lang;
 
 

@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import { useState} from "react";
+import { useState } from "react";
 import { useRouter } from "next/router";
 import ru from "../locales/ru";
 import ro from "../locales/ro";
@@ -11,7 +11,7 @@ export const AppProvider = (props) => {
   const [activeTab, setActiveTab] = useState(null);
 
   const router = useRouter();
-  const {locale} = router;
+  const { locale } = router;
   const t = locale === 'ro' ? ro : ru;
 
   const changeLanguage = (e) => {

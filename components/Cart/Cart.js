@@ -7,6 +7,7 @@ import { useRouter } from "next/router";
 const Cart = () => {
   const value = useContext(AppContext);
   const [cart, setCart] = value.cart;
+
   const [t, lang, changeLanguage] = value.lang;
 
   const router = useRouter();
@@ -16,7 +17,7 @@ const Cart = () => {
 
     for (let item of newState) {
       if (item._id === id) {
-        item.quantity += 1;
+        item.amount += 1;
         break;
       }
     }
@@ -29,10 +30,10 @@ const Cart = () => {
 
     for (let item of newState) {
       if (item._id === id) {
-        if (item.quantity === 1) {
+        if (item.amount === 1) {
           return;
         }
-        item.quantity -= 1;
+        item.amount -= 1;
         break;
       }
     }
@@ -47,7 +48,7 @@ const Cart = () => {
 
   const getTotal = (cart) => {
     const result = cart.reduce((total, item) => {
-      total += item.price * item.quantity;
+      total += item.price * item.amount;
       return total;
     }, 0);
     return result;
@@ -120,7 +121,8 @@ export default Cart;
 
 const EmptyCart = () => {
   const value = useContext(AppContext);
-  const [cart, setCart] = value.cart;
+  const cart = value.cart.cart.cart;
+  const setCart = value.cart.cart.setCart;
   const [t, lang, changeLanguage] = value.lang;
 
   return <h1 style={{ paddingLeft: 20 }}>{t.cart.empty}</h1>;
