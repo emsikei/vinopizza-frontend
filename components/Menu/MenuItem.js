@@ -3,6 +3,7 @@ import { BsCart3, BsPlusLg } from "react-icons/bs"
 import { BiMinus } from "react-icons/bi"
 import { useContext, useState } from "react";
 import { AppContext } from "../../contexts/AppContext";
+import Image from "next/image";
 
 const MenuItem = ({ product }) => {
     const value = useContext(AppContext);
@@ -14,7 +15,7 @@ const MenuItem = ({ product }) => {
     const testFunc = (product, id) => {
         const foundProduct = cart.find(item => item._id === id);
 
-        const copy = {...product};
+        const copy = { ...product };
 
         if (foundProduct) {
             foundProduct.quantity += amount;
@@ -41,11 +42,9 @@ const MenuItem = ({ product }) => {
 
         setCart([...cart, product]);
         setAmount(1);
-        
+
         // testFunc(, "6229cf4b45e8a1543d7e279f");
     };
-
-
 
     const incrementAmount = () => {
         setAmount(amount + 1);
@@ -58,11 +57,16 @@ const MenuItem = ({ product }) => {
         setAmount(amount - 1);
     }
 
+    const imgsrc = "/assets/images/products/" + product.image;
+
     return (
         <div className={styles.product__item}>
             <div className={styles.product__info}>
                 <div className={styles.product__image}>
-                    <img src={product.image} alt={product.translation[lang].name} />
+                    {console.log(product.image)}
+                    <img
+                        src={imgsrc}
+                        alt={product.translation[lang].name}/>
                 </div>
 
                 <h2>{product.translation[lang].name}</h2>

@@ -1,13 +1,13 @@
 import menu from "../../data/menu";
-import {useState, useContext} from "react";
+import { useState, useContext } from "react";
 import styles from "./Menu.module.scss";
 import Category from "./Category";
 import MenuItem from "./MenuItem";
-import {getAllUniqueCategories} from "../../helpers";
+import { getAllUniqueCategories } from "../../helpers";
 import { AppContext } from "../../contexts/AppContext";
 
-const Menu = () => {
-    const [categories, setCategories] = useState(getAllUniqueCategories(menu.products));
+const Menu = ({ menu }) => {
+    const [categories, setCategories] = useState(menu.categories);
     const [products, setProducts] = useState(menu.products);
 
     const value = useContext(AppContext);
@@ -47,8 +47,8 @@ const Menu = () => {
                                 {products
                                     .filter(
                                         (product) =>
-                                            product.translation[lang].category ===
-                                            category.translation[lang].name
+                                            product.category ===
+                                            category._id
                                     )
                                     .map((product) => {
                                         return (
