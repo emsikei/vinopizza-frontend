@@ -1,13 +1,46 @@
 .checkout__form {
   margin: 100px 0 0 30px;
 
-  &__input {
-    background: transparent;
+  .block {
+    position: relative;
+    margin-bottom: 20px;
+    width: 40vw;
+
+    &.house {
+      display: flex;
+
+      input {
+        width: 33.3333%;
+        margin-right: 10px;
+
+        &:last-child {
+          margin-right: 0px;
+        }
+      }
+    }
+
+    &.credentials {
+      display: flex;
+
+      input {
+        width: 50%;
+        margin-right: 10px;
+
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+
+  .input {
     border: 1px solid #fff;
+    font-family: var(--font-poppins);
+    font-size: 15px;
+    padding: 12px;
     color: #fff;
-    // font-size: 15px;
-    // font-family: var(--font-poppins);
-    transition: all 0.2s ease-in-out;
+    background: transparent;
+    width: 100%;
 
     &:focus {
       outline: 1px solid var(--main-yellow);
@@ -15,7 +48,46 @@
     }
   }
 
-  &__label {
-    color: #fff;
+  .btn {
+    background-color: var(--main-yellow);
+    border: 1px solid transparent;
+    font-family: var(--font-poppins);
+    font-size: 15px;
+    font-weight: 300;
+    transition: all 0.2s ease-in-out;
+    padding: 10px;
+
+    &:hover {
+      cursor: pointer;
+      color: var(--main-yellow);
+      background: transparent;
+      border: 1px solid var(--main-yellow);
+    }
   }
+
+  // &__input {
+  //   background: transparent;
+  //   border: 1px solid #fff;
+  //   color: #fff;
+  //   // font-size: 15px;
+  //   width: 15vw;
+  //   font-family: var(--font-poppins);
+  //   transition: all 0.2s ease-in-out;
+
+  //   &:focus {
+  //     outline: 1px solid var(--main-yellow);
+  //     box-shadow: 0 0 10px var(--main-yellow);
+  //   }
+  // }
+
+  // &__label {
+  //   color: #fff;
+  //   margin-right: 20px;
+  // }
+
+  // .address__container {
+  //   display: flex;
+  //   flex-wrap: wrap;
+  //   flex-direction: column;
+  // }
 }

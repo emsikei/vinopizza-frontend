@@ -1,0 +1,19 @@
+.orders {
+  margin: 40px 0 0 30px;
+  color: #fff;
+  display: block;
+
+  .payment {
+    text-align: center;
+  }
+
+  th,
+  tr {
+    text-align: center;
+    padding: 15px;
+  }
+
+  .accept, .remove {
+      cursor: pointer;
+  } 
+}

@@ -1,6 +1,10 @@
 import React, { useState, useContext } from 'react'
 import styles from "./CheckoutForm.module.scss"
 import { AppContext } from "../../contexts/AppContext"
+import axios from 'axios'
+
+//TODO: add validation to checkout
+//TODO: fix order service/controller in backend
 
 const CheckoutForm = () => {
     const initialState = {
@@ -11,7 +15,7 @@ const CheckoutForm = () => {
                 street: "",
                 houseNumber: "",
                 flat: "",
-                entrance: "",
+                enterance: "",
                 floor: "",
                 codeIntercom: "",
             },
@@ -27,145 +31,164 @@ const CheckoutForm = () => {
 
     const value = useContext(AppContext);
     const [t, lang, changeLanguage] = value.lang;
+    const [cart, setCart] = value.cart;
 
     const [name, setName] = useState("");
-    const [city, setCity] = useState("");
+    const [city, setCity] = useState("Chisinau");
     const [street, setStreet] = useState("");
     const [houseNumber, setHouseNumber] = useState("");
     const [flat, setFlat] = useState("");
-    const [entrance, setEntrance] = useState("");
+    const [enterance, setEnterance] = useState("");
     const [floor, setFloor] = useState("");
     const [codeIntercom, setCodeIntercom] = useState("");
     const [phone, setPhone] = useState("");
 
+    const getOrderedProducts = (cart) => {
+        let orderedProducts = [];
+        for (let item of cart) {
+            orderedProducts.push({product: item._id, amount: item.amount})
+        }
+        return orderedProducts;
+    }
+
+    const orderedProducts = getOrderedProducts(cart);
+
+    const getTotal = (cart) => {
+        const result = cart.reduce((total, item) => {
+            total += item.price * item.amount;
+            return total;
+        }, 0);
+
+        const total = result >= 450 ? result : result + 35;
+
+        return total;
+    };
+
+    const total = getTotal(cart);
+
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        const newState = {
-            name,
-            city,
-            address: {
-                street,
-                houseNumber,
-                flat,
-                entrance,
-                floor,
-                codeIntercom
+        const date = new Date();
+        const time =
+            ("0" + date.getUTCDate()).slice(-2) + "/" + 
+            ("0" + (date.getUTCMonth() + 1)).slice(-2) + "/" +
+            date.getUTCFullYear() + " " +
+            ("0" + date.getUTCHours()).slice(-2) + ":" +
+            ("0" + date.getUTCMinutes()).slice(-2) + ":" +
+            ("0" + date.getUTCSeconds()).slice(-2);
+
+        const order = {
+            time,
+            customerInfo: {
+                name,
+                city,
+                address: {
+                    street,
+                    houseNumber,
+                    flat,
+                    enterance,
+                    floor,
+                    codeIntercom
+                },
+                phone,
             },
-            phone
+            orderedProducts,
+            paymentMethod: "Cash",
+            total,
+            status: "Pending"
         }
 
-        console.log(newState)
+        axios
+            .post("http://localhost:5000/api/v1/orders", order)
+            .then((response) => {
+                console.log(response.data);
+            });
 
-        setFormValues({ ...initialState, newState })
-        console.log(formValues)
+        setFormValues({ ...initialState, order })
+        // console.log(newState)
     }
-
-    //TODO: cart item model
-    //TODO: order model 
 
     return (
         <form className={styles.checkout__form} onSubmit={handleSubmit}>
-            <div>
-                <label
-                    className={styles.checkout__form__label}
-                    htmlFor="name">{t.checkout.customerInfo.name}</label>
+            <div className={styles.block}>
                 <input
-                    className={styles.checkout__form__input}
+                    className={styles.input}
                     type="text"
                     value={name}
-                    name="name"
-                    onChange={e => setName(e.target.value)} />
+                    onChange={e => setName(e.target.value)}
+                    placeholder="Nume"
+                />
             </div>
-
-            <div>
-                <label
-                    className={styles.checkout__form__label}
-                    htmlFor="city">{t.checkout.customerInfo.city}</label>
+            <div className={styles.block}>
                 <input
-                    className={styles.checkout__form__input}
+                    className={styles.input}
                     type="text"
                     value={city}
-                    name="city"
-                    onChange={e => setCity(e.target.value)} />
+                    readOnly={true}
+                />
             </div>
-
-            <div>
-                <label
-                    className={styles.checkout__form__label}
-                    htmlFor="street">{t.checkout.customerInfo.address.street}</label>
+            <div className={styles.block}>
                 <input
-                    className={styles.checkout__form__input}
+                    className={styles.input}
                     type="text"
                     value={street}
-                    name="street"
-                    onChange={e => setStreet(e.target.value)} />
-
-                <label
-                    className={styles.checkout__form__label}
-                    htmlFor="houseNumber">{t.checkout.customerInfo.address.houseNumber}</label>
+                    onChange={e => setStreet(e.target.value)}
+                    placeholder="Strada"
+                />
+            </div>
+            <div className={`${styles.block} ${styles.house}`}>
                 <input
-                    className={styles.checkout__form__input}
+                    className={styles.input}
                     type="text"
                     value={houseNumber}
-                    name="houseNumber"
-                    onChange={e => setHouseNumber(e.target.value)} />
-
-                <label
-                    className={styles.checkout__form__label}
-                    htmlFor="flat">{t.checkout.customerInfo.address.flat}</label>
+                    onChange={e => setHouseNumber(parseInt(e.target.value))}
+                    placeholder="Nr casei"
+                />
                 <input
-                    className={styles.checkout__form__input}
+                    className={styles.input}
                     type="text"
                     value={flat}
-                    name="flat"
-                    onChange={e => setFlat(e.target.value)} />
-
-                <label
-                    className={styles.checkout__form__label}
-                    htmlFor="entrance">{t.checkout.customerInfo.address.entrance}</label>
+                    onChange={e => setFlat(parseInt(parseInt(e.target.value)))}
+                    placeholder="Nr apartamentului"
+                />
                 <input
-                    className={styles.checkout__form__input}
+                    className={styles.input}
                     type="text"
-                    value={entrance}
-                    name="entrance"
-                    onChange={e => setEntrance(e.target.value)} />
+                    value={enterance}
+                    onChange={e => setEnterance(parseInt(e.target.value))}
+                    placeholder="Nr intrarei"
+                />
+            </div>
 
-                <label
-                    className={styles.checkout__form__label}
-                    htmlFor="floor">{t.checkout.customerInfo.address.floor}</label>
+            <div className={`${styles.block} ${styles.credentials}`}>
                 <input
-                    className={styles.checkout__form__input}
+                    className={styles.input}
                     type="text"
                     value={floor}
-                    name="floor"
-                    onChange={e => setFloor(e.target.value)} />
-
-                <label
-                    className={styles.checkout__form__label}
-                    htmlFor="codeIntercom">{t.checkout.customerInfo.address.codeIntercom}</label>
+                    onChange={e => setFloor(parseInt(e.target.value))}
+                    placeholder="Etaj"
+                />
                 <input
-                    className={styles.checkout__form__input}
+                    className={styles.input}
                     type="text"
                     value={codeIntercom}
-                    name="codeIntercom"
-                    onChange={e => setCodeIntercom(e.target.value)} />
-
+                    onChange={e => setCodeIntercom(e.target.value)}
+                    placeholder="Codul domofonului"
+                />
             </div>
 
-            <div>
-                <label
-                    className={styles.checkout__form__label}
-                    htmlFor="phone">{t.checkout.customerInfo.address.phone}</label>
+            <div className={`${styles.block}`}>
                 <input
-                    className={styles.checkout__form__input}
+                    className={styles.input}
                     type="text"
                     value={phone}
-                    name="phone"
-                    onChange={e => setPhone(e.target.value)} />
+                    onChange={e => setPhone(e.target.value)}
+                    placeholder="Telefon"
+                />
             </div>
 
-            <button type="submit">{t.checkout.button}</button>
+            <button className={styles.btn} type="submit">{t.checkout.button}</button>
         </form>
     )
 }
