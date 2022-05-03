@@ -7,6 +7,7 @@ import { validateProduct } from '../../../helpers';
 import styles from "./../../Forms/DashboardForms.module.scss"
 import { AppContext } from '../../../contexts/AppContext';
 import axios from "axios"
+import { useRouter } from 'next/router';
 
 // const categories = [
 //     {
@@ -70,6 +71,8 @@ const CreateProduct = ({ _categories }) => {
 
     const value = useContext(AppContext);
     const [t, lang, changeLanguage] = value.lang;
+
+    const router = useRouter();
 
     const handleImageChange = (e) => {
         setImageURL(URL.createObjectURL(e.target.files[0]));
